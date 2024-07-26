@@ -5,13 +5,13 @@ import Link from "next/link";
 
 const TopNavbar = () => {
   return (
-    <div className="w-full bg-primary text-white h-[3rem]">
+    <div className="w-full bg-[#F7F7F7] h-[45px]">
       <div className="max-width h-full flex justify-end items-center">
         <div className="flex gap-6 items-center">
           {socialLinks.map((item) => (
             <Link
               key={item.label}
-              href={item.path}
+              href={item.route}
               rel="noreferrer"
               target="_blank"
               className=""
@@ -21,7 +21,7 @@ const TopNavbar = () => {
                 alt={item.label}
                 width={26}
                 height={18}
-                className="invert hover:invert-0"
+                className=""
               />
             </Link>
           ))}

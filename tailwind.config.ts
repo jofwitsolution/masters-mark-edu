@@ -56,9 +56,10 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        light: {
+        tertiary: {
           100: "#f9f9f9",
-          400: "#919191",
+          300: "#919191",
+          400: "#808080",
           500: "#666666",
         },
       },

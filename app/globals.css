@@ -72,4 +72,16 @@
   .max-width {
     @apply max-w-[1280px] px-[24px] mx-auto;
   }
+
+  .circled-icon {
+    @apply w-[2.75rem] h-[2.75rem] rounded-full border border-primary flex justify-center items-center;
+  }
+
+  .navbar-link-active {
+    @apply bg-secondary text-white rounded-s-[10px] rounded-e-[10px];
+  }
+
+  .navbar-link {
+    @apply cursor-pointer font-semibold hover:bg-secondary text-white rounded-s-[25px] rounded-e-[25px] py-[10px] px-[16px];
+  }
 }
