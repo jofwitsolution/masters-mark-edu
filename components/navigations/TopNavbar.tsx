@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const TopNavbar = () => {
   return (
-    <div className="w-full bg-[#F7F7F7] h-[45px]">
+    <div className="w-full max-sm:bg-primary-100 bg-[#F7F7F7] h-[45px]">
       <div className="max-width h-full flex justify-end items-center">
         <div className="flex gap-6 items-center">
           {socialLinks.map((item) => (
@@ -21,7 +21,7 @@ const TopNavbar = () => {
                 alt={item.label}
                 width={26}
                 height={18}
-                className=""
+                className="max-sm:invert"
               />
             </Link>
           ))}

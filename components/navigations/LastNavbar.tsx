@@ -9,7 +9,7 @@ const LastNavbar = () => {
   const pathname = usePathname();
 
   return (
-    <div className="bg-primary-100 h-[70px]">
+    <div className="bg-primary-100 h-[70px] max-md:hidden">
       <div className="max-width h-full flex items-center justify-between">
         <div className="flex items-center gap-1">
           {navbarLinks.map((item) => {
@@ -30,6 +30,7 @@ const LastNavbar = () => {
             );
           })}
         </div>
+        <div></div>
       </div>
     </div>
   );
