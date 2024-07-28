@@ -33,9 +33,11 @@ const LastNavbar = () => {
           })}
         </div>
         <div>
-          <Button className="flex items-center gap-2 bg-secondary hover:bg-secondary-100 font-medium text-white rounded-s-[50px] rounded-e-[50px] py-[15px] px-[35px]">
-            <LogIn size={18} className="text-white" /> Log In
-          </Button>
+          <Link href="/sign-in">
+            <Button className="flex items-center gap-2 bg-secondary hover:bg-secondary-100 font-medium text-white rounded-s-[50px] rounded-e-[50px] py-[20px] px-[35px]">
+              <LogIn size={18} className="text-white" /> Log In
+            </Button>
+          </Link>
         </div>
       </div>
     </div>
