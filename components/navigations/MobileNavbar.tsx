@@ -52,7 +52,7 @@ const MobileNavbar = () => {
         <Link href="/" className="mt-[-0.5rem] flex items-center gap-1">
           <Image
             src="/images/mmlogo.png"
-            width={120}
+            width={160}
             height={50}
             alt="MasterMark"
             className=""

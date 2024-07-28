@@ -63,6 +63,11 @@ const config = {
           500: "#666666",
         },
       },
+      fontFamily: {
+        urbanist: ["var(--font-urbanist)"],
+        inter: ["var(--font-inter)"],
+        gabriela: ["var(--font-gabriela)"],
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
@@ -77,6 +82,11 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+      },
+      backgroundImage: {
+        "gradient-text": "linear-gradient(180deg, #fff, #adadad)",
+        "dark-gradient-300":
+          "linear-gradient(to right, rgba(0,0,0,0.5), rgba(0,0,0,0.5))",
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",

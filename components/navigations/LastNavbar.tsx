@@ -4,6 +4,7 @@ import React from "react";
 import { navbarLinks } from "@/constants/nav-links";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Button } from "../ui/button";
 
 const LastNavbar = () => {
   const pathname = usePathname();
@@ -23,14 +24,16 @@ const LastNavbar = () => {
                 href={item.route}
                 className={`${
                   isActive ? "navbar-link-active" : ""
-                } navbar-link`}
+                } navbar-link font-inter`}
               >
                 {item.label}
               </Link>
             );
           })}
         </div>
-        <div></div>
+        <div>
+          <Button className="bg-secondary text-white">Log In</Button>
+        </div>
       </div>
     </div>
   );

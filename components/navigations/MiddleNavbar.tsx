@@ -8,14 +8,16 @@ const MiddleNavbar = () => {
   return (
     <div className="bg-white h-[4rem] max-sm:shadow-md sm:h-[6rem]">
       <div className="max-width h-full flex items-center justify-between">
-        <Image
-          src="/images/mmlogo.png"
-          alt="mmlogo"
-          width={250}
-          height={60}
-          className="max-sm:w-[160px]"
-        />
-        <div className="flex gap-8 items-center">
+        <Link href="/">
+          <Image
+            src="/images/mmlogo.png"
+            alt="mmlogo"
+            width={250}
+            height={60}
+            className="max-sm:w-[160px]"
+          />
+        </Link>
+        <div className="flex gap-8 items-center font-inter">
           <div className="flex gap-8 items-center max-md:hidden">
             <Link
               href="tel: +2347046145189"

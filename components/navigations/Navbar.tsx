@@ -5,7 +5,7 @@ import MiddleNavbar from "./MiddleNavbar";
 
 const Navbar = () => {
   return (
-    <nav>
+    <nav className="sticky top-0 z-[7500]">
       <TopNavbar />
       <MiddleNavbar />
       <LastNavbar />
