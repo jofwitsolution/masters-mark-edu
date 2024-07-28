@@ -4,6 +4,7 @@
 
 body {
   font-family: "Inter", sans-serif;
+  /* color: #f7a4c2; */
 }
 
 @layer base {
@@ -81,10 +82,10 @@ body {
   }
 
   .utility-btn-1 {
-    @apply bg-secondary text-white rounded-s-[25px] rounded-e-[25px] py-[12px] px-[20px] sm:py-[23px] sm:px-[30px] font-semibold;
+    @apply bg-secondary hover:!bg-secondary-100 text-white rounded-s-[25px] rounded-e-[25px] py-[12px] px-[20px] sm:py-[23px] sm:px-[30px] font-semibold;
   }
 
   .utility-btn-2 {
-    @apply bg-white text-secondary-100 rounded-s-[25px] rounded-e-[25px] border border-secondary hover:bg-primary hover:text-white py-[12px] px-[20px] sm:py-[23px] sm:px-[30px] font-semibold;
+    @apply bg-white text-secondary-500 rounded-s-[25px] rounded-e-[25px] border border-secondary hover:!bg-tertiary-100 py-[12px] px-[20px] sm:py-[23px] sm:px-[30px] font-semibold;
   }
 }

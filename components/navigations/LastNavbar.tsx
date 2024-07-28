@@ -5,6 +5,7 @@ import { navbarLinks } from "@/constants/nav-links";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "../ui/button";
+import { LogIn } from "lucide-react";
 
 const LastNavbar = () => {
   const pathname = usePathname();
@@ -32,7 +33,9 @@ const LastNavbar = () => {
           })}
         </div>
         <div>
-          <Button className="bg-secondary text-white">Log In</Button>
+          <Button className="flex items-center gap-2 bg-secondary hover:bg-secondary-100 font-medium text-white rounded-s-[50px] rounded-e-[50px] py-[15px] px-[35px]">
+            <LogIn size={18} className="text-white" /> Log In
+          </Button>
         </div>
       </div>
     </div>
