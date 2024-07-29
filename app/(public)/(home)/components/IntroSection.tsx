@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { ArrowRight } from "lucide-react";
 
 const IntroSection = () => {
   return (
@@ -91,6 +92,47 @@ const IntroSection = () => {
               />
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      <section className="max-width padding-vertical">
+        <div className="flex gap-1 flex-wrap">
+          <Link
+            href={"/schools"}
+            className="w-full sm:w-[300px] group flex items-center justify-center gap-3 h-[160px] bg-primary-100 hover:bg-primary-foreground rounded text-white"
+          >
+            <h3 className="h3-semibold">Primary School</h3>
+            <span className="inline-block transform rotate-[-45deg] transition-transform duration-300 group-hover:rotate-0">
+              <ArrowRight />
+            </span>
+          </Link>
+          <Link
+            href={"/schools"}
+            className="w-full sm:w-[300px] group flex items-center justify-center gap-3 h-[160px] bg-primary-100 hover:bg-primary-foreground rounded text-white"
+          >
+            <h3 className="h3-semibold">Preschool/Nursery</h3>
+            <span className="inline-block transform rotate-[-45deg] transition-transform duration-300 group-hover:rotate-0">
+              <ArrowRight />
+            </span>
+          </Link>
+          <Link
+            href={"/schools"}
+            className="w-full sm:w-[300px] group flex items-center justify-center gap-3 h-[160px] bg-primary-100 hover:bg-primary-foreground rounded text-white"
+          >
+            <h3 className="h3-semibold">Creche</h3>
+            <span className="inline-block transform rotate-[-45deg] transition-transform duration-300 group-hover:rotate-0">
+              <ArrowRight />
+            </span>
+          </Link>
+          <Link
+            href={"/schools"}
+            className="w-full sm:w-[300px] group flex items-center justify-center gap-3 h-[160px] bg-primary-100 hover:bg-primary-foreground rounded text-white"
+          >
+            <h3 className="h3-semibold">The Afterschool club</h3>
+            <span className="inline-block transform rotate-[-45deg] transition-transform duration-300 group-hover:rotate-0">
+              <ArrowRight />
+            </span>
+          </Link>
         </div>
       </section>
     </div>

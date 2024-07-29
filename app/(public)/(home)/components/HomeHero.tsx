@@ -19,7 +19,7 @@ const HeroButtons = () => {
         <Button className="rounded-btn-1">Find a program</Button>
       </Link>
       <Link href="/contact">
-        <Button className="rounded-btn-2">Get in touch</Button>
+        <Button className="rounded-btn-2">Apply now</Button>
       </Link>
     </div>
   );
