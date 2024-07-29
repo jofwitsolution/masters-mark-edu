@@ -2,6 +2,8 @@ import React from "react";
 import HomeHero from "./components/HomeHero";
 import NumbersSection from "@/components/NumbersSection";
 import IntroSection from "./components/IntroSection";
+import ReviewSection from "./components/ReviewSection";
+import EventSection from "./components/EventSection";
 
 const Page = () => {
   return (
@@ -9,6 +11,8 @@ const Page = () => {
       <HomeHero />
       <NumbersSection />
       <IntroSection />
+      <ReviewSection />
+      <EventSection />
     </div>
   );
 };

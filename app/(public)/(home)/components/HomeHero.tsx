@@ -10,12 +10,17 @@ import {
 import Image from "next/image";
 import Autoplay from "embla-carousel-autoplay";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const HeroButtons = () => {
   return (
     <div className="mt-8 flex justify-center gap-4 sm:gap-8">
-      <Button className="rounded-btn-1">Find a program</Button>
-      <Button className="rounded-btn-2">Get in touch</Button>
+      <Link href="/schools">
+        <Button className="rounded-btn-1">Find a program</Button>
+      </Link>
+      <Link href="/contact">
+        <Button className="rounded-btn-2">Get in touch</Button>
+      </Link>
     </div>
   );
 };

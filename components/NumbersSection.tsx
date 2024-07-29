@@ -13,21 +13,6 @@ const NumbersSection = () => {
         transition={{ duration: 1 }}
         className="max-width flex gap-12 md:gap-8 max-md:flex-col max-md:items-center justify-between"
       >
-        <div className="flex gap-4">
-          <Image
-            src="/icons/numbers/clients.svg"
-            alt="clients"
-            width={68}
-            height={59}
-          />
-          <div className="flex flex-col font-inter">
-            <span className="text-[30px] sm:text-[43px] leading-[50px] font-bold">
-              153+
-            </span>
-            <span className="font-semibold text-[21px]">Happy Student</span>
-          </div>
-        </div>
-
         <div className="flex gap-8 items-center">
           <Image
             src="/icons/vertical-line.svg"
@@ -72,6 +57,30 @@ const NumbersSection = () => {
                 100+
               </span>
               <span className="font-semibold text-[21px]">Graduates</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex gap-8 items-center">
+          <Image
+            src="/icons/vertical-line.svg"
+            alt="vertical-line"
+            width={2}
+            height={40}
+            className="max-md:hidden"
+          />
+          <div className="flex gap-4">
+            <Image
+              src="/icons/numbers/clients.svg"
+              alt="clients"
+              width={68}
+              height={59}
+            />
+            <div className="flex flex-col font-inter">
+              <span className="text-[30px] sm:text-[43px] leading-[50px] font-bold">
+                153+
+              </span>
+              <span className="font-semibold text-[21px]">Happy Student</span>
             </div>
           </div>
         </div>

@@ -62,7 +62,7 @@ const IntroSection = () => {
               requirements, ensuring each child receives the support and
               stimulation they need to flourish. We create dynamic learning
               environments where children can explore, discover, and grow at
-              their own pace.s
+              their own paces
             </p>
 
             <Link href="/schools">

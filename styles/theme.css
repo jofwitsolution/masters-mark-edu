@@ -9,4 +9,7 @@
   .h2-semibold {
     @apply text-[32px] md:text-[46px] font-semibold font-urbanist leading-[38px] md:leading-[54px];
   }
+  .paragraph-grey {
+    @apply text-[#7F8490] leading-[28px];
+  }
 }
