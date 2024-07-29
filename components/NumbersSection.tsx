@@ -1,10 +1,18 @@
+"use client";
+
 import Image from "next/image";
 import React from "react";
+import { motion } from "framer-motion";
 
 const NumbersSection = () => {
   return (
-    <section className="py-16">
-      <div className="max-width flex gap-12 md:gap-8 max-md:flex-col max-md:items-center justify-between">
+    <section className="pt-12 md:pt-24 pb-10 md:pb-20">
+      <motion.div
+        initial="hidden"
+        whileInView={{ visibility: "visible", opacity: [0, 1], y: [20, 0] }}
+        transition={{ duration: 1 }}
+        className="max-width flex gap-12 md:gap-8 max-md:flex-col max-md:items-center justify-between"
+      >
         <div className="flex gap-4">
           <Image
             src="/icons/numbers/clients.svg"
@@ -67,7 +75,7 @@ const NumbersSection = () => {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };

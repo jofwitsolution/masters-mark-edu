@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .h1-gabriela {
+    @apply font-gabriela text-[28px] leading-[36px] sm:text-[48px] sm:leading-[68px];
+  }
+  .h2-semibold {
+    @apply text-[32px] md:text-[46px] font-semibold font-urbanist leading-[38px] md:leading-[54px];
+  }
+}

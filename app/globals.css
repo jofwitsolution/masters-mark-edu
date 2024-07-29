@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("../styles/theme.css");
+
 body {
   font-family: "Inter", sans-serif;
   /* color: #f7a4c2; */
@@ -81,11 +83,19 @@ body {
     @apply cursor-pointer font-semibold hover:bg-secondary text-white rounded-s-[25px] rounded-e-[25px] py-[10px] px-[16px];
   }
 
-  .utility-btn-1 {
+  .rounded-btn-1 {
     @apply bg-secondary hover:!bg-secondary-100 text-white rounded-s-[25px] rounded-e-[25px] py-[12px] px-[20px] sm:py-[23px] sm:px-[30px] font-semibold;
   }
 
-  .utility-btn-2 {
+  .rounded-btn-2 {
     @apply bg-white text-secondary-500 rounded-s-[25px] rounded-e-[25px] border border-secondary hover:!bg-tertiary-100 py-[12px] px-[20px] sm:py-[23px] sm:px-[30px] font-semibold;
+  }
+
+  .btn-1 {
+    @apply w-[280px] h-[55px] lg:w-[385px] lg:h-[78px] flex items-center justify-center font-semibold text-[20px] lg:text-[24px] font-urbanist;
+  }
+
+  .padding-vertical {
+    @apply py-10 md:py-20;
   }
 }

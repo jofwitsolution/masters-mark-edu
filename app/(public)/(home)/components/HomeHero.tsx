@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { motion } from "framer-motion";
 import {
   Carousel,
   CarouselContent,
@@ -13,8 +14,8 @@ import { Button } from "@/components/ui/button";
 const HeroButtons = () => {
   return (
     <div className="mt-8 flex justify-center gap-4 sm:gap-8">
-      <Button className="utility-btn-1">Find a program</Button>
-      <Button className="utility-btn-2">Get in touch</Button>
+      <Button className="rounded-btn-1">Find a program</Button>
+      <Button className="rounded-btn-2">Get in touch</Button>
     </div>
   );
 };
@@ -38,18 +39,23 @@ const HomeHero = () => {
               className="object-cover"
             />
             <div className="bg-dark-gradient-300 px-[24px] absolute w-full z-[5] h-full flex items-center justify-center">
-              <div className="flex flex-col items-center">
+              <motion.div
+                initial="hidden"
+                whileInView={{ opacity: [0, 1], x: [30, 0] }}
+                transition={{ delay: 1, duration: 1 }}
+                className="flex flex-col items-center"
+              >
                 <span className="text-[24px] max-sm:hidden font-urbanist capitalize font-bold text-secondary text-center">
                   Master&apos;s Mark
                 </span>
-                <h1 className="font-gabriela max-w-[700px] text-center text-white text-[28px] leading-[36px] sm:text-[48px] sm:leading-[68px]">
+                <h1 className="max-w-[700px] text-center h1-gabriela text-white">
                   Supporting Comprehensive Child Growth
                 </h1>
                 <p className="text-white text-center mt-8 font-inter">
                   We help kids become all they could be!
                 </p>
                 <HeroButtons />
-              </div>
+              </motion.div>
             </div>
           </CarouselItem>
           <CarouselItem className="h-[400px] sm:h-[700px] relative w-full">
@@ -60,18 +66,23 @@ const HomeHero = () => {
               className="object-cover"
             />
             <div className="bg-dark-gradient-300 px-[24px] absolute w-full z-[5] h-full flex items-center justify-center">
-              <div className="flex flex-col items-center">
+              <motion.div
+                initial="hidden"
+                whileInView={{ opacity: [0, 1], x: [30, 0] }}
+                transition={{ delay: 1, duration: 1 }}
+                className="flex flex-col items-center"
+              >
                 <span className="text-[24px] max-sm:hidden font-urbanist capitalize font-bold text-secondary text-center">
                   Master&apos;s Mark
                 </span>
-                <h1 className="font-gabriela max-w-[700px] text-center text-white text-[28px] leading-[36px] sm:text-[48px] sm:leading-[68px]">
+                <h1 className="h1-gabriela text-white text-center max-w-[700px]">
                   Safe Learning <br /> Environment
                 </h1>
                 <p className="text-white text-center mt-8 font-inter">
                   We provide a conducive learning environment
                 </p>
                 <HeroButtons />
-              </div>
+              </motion.div>
             </div>
           </CarouselItem>
           <CarouselItem className="h-[400px] sm:h-[700px] relative w-full">
@@ -82,15 +93,20 @@ const HomeHero = () => {
               className="object-cover"
             />
             <div className="bg-dark-gradient-300 px-[24px] absolute w-full z-[5] h-full flex items-center justify-center">
-              <div className="flex flex-col items-center">
+              <motion.div
+                initial="hidden"
+                whileInView={{ opacity: [0, 1], x: [30, 0] }}
+                transition={{ delay: 1, duration: 1 }}
+                className="flex flex-col items-center"
+              >
                 <span className="text-[24px] max-sm:hidden font-urbanist capitalize font-bold text-secondary text-center">
                   Master&apos;s Mark
                 </span>
-                <h1 className="font-gabriela max-w-[700px] text-center text-white text-[28px] leading-[36px] sm:text-[48px] sm:leading-[68px]">
+                <h1 className="h1-gabriela text-white text-center max-w-[700px]">
                   Play to Learn <br /> Activities
                 </h1>
                 <HeroButtons />
-              </div>
+              </motion.div>
             </div>
           </CarouselItem>
         </CarouselContent>
