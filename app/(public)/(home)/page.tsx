@@ -4,6 +4,7 @@ import NumbersSection from "@/components/NumbersSection";
 import IntroSection from "./components/IntroSection";
 import ReviewSection from "./components/ReviewSection";
 import EventSection from "./components/EventSection";
+import FeatureSection from "./components/FeatureSection";
 
 const Page = () => {
   return (
@@ -11,6 +12,7 @@ const Page = () => {
       <HomeHero />
       <NumbersSection />
       <IntroSection />
+      <FeatureSection />
       <ReviewSection />
       <EventSection />
     </div>
