@@ -27,23 +27,14 @@ const BlogSection = () => {
           </p>
         </div>
         <div className="flex gap-4 flex-wrap max-sm:justify-center xl:justify-center">
-          {Array.from({ length: 5 }).map((_, index) => (
+          {Array.from({ length: 3 }).map((_, index) => (
             <Link key={index} href={"/"} className="group">
-              <Card className="!p-3 bg-transparent rounded-3xl w-[330px] group-hover:border group-hover:border-primary">
-                <CardTitle className="h-[70px] px-2">
-                  <h3 className="h3-normal">
-                    master’smark Early Learning Educational Services.
-                  </h3>
+              <Card className="!p-3 bg-slate-200 rounded-3xl w-[330px] group-hover:border group-hover:border-primary">
+                <CardTitle className="h-[100px] h3-normal px-2">
+                  master’smark Early Learning Educational Services.
                 </CardTitle>
-                <CardDescription className="px-2 h-[35px]">
-                  <Badge
-                    variant="outline"
-                    className="text-slate-500 text-[12px]"
-                  >
-                    #development
-                  </Badge>
-                </CardDescription>
-                <CardContent className="p-0">
+
+                <CardContent className="p-0 mt-4">
                   <Image
                     src={"/images/event-1.jpg"}
                     width={320}

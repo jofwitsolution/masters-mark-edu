@@ -29,13 +29,13 @@ const EventSection = () => {
             opts={{
               align: "start",
             }}
-            className="w-full"
+            className="md:w-full"
           >
             <CarouselContent>
               {Array.from({ length: 5 }).map((_, index) => (
                 <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
                   <div className="p-1">
-                    <Card className="!p-2">
+                    <Card className="!p-2 max-md:max-w-[340px]">
                       <CardContent className="p-0">
                         <Image
                           src={"/images/event-1.jpg"}
@@ -53,8 +53,8 @@ const EventSection = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
+            <CarouselPrevious className="max-sm:hidden" />
+            <CarouselNext className="max-sm:hidden" />
           </Carousel>
         </div>
       </div>

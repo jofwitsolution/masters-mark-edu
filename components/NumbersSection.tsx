@@ -3,6 +3,7 @@
 import Image from "next/image";
 import React from "react";
 import { motion } from "framer-motion";
+import { Users } from "lucide-react";
 
 const NumbersSection = () => {
   return (
@@ -22,12 +23,9 @@ const NumbersSection = () => {
             className="max-md:hidden"
           />
           <div className="flex gap-4">
-            <Image
-              src="/icons/numbers/group.svg"
-              alt="clients"
-              width={68}
-              height={59}
-            />
+            <span className="">
+              <Users size={68} />
+            </span>
             <div className="flex flex-col font-inter">
               <span className="text-[30px] sm:text-[43px] leading-[50px] font-bold">
                 25+

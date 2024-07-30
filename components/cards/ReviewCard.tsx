@@ -9,6 +9,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import Image from "next/image";
+import { Star } from "lucide-react";
 
 const ReviewCard = () => {
   return (
@@ -26,14 +27,9 @@ const ReviewCard = () => {
         <CardHeader>
           <CardTitle className="flex gap-1">
             {[23, 12, 10, 1, 4].map((item) => (
-              <Image
-                key={item}
-                src="/icons/star.svg"
-                alt="star"
-                width={20}
-                height={20}
-                className=""
-              />
+              <span key={item} className="text-secondary-foreground">
+                <Star />
+              </span>
             ))}
           </CardTitle>
         </CardHeader>
