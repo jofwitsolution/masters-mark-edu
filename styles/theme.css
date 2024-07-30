@@ -15,6 +15,9 @@
   .h3-medium {
     @apply text-[24px] font-medium font-urbanist leading-[30px];
   }
+  .h3-normal {
+    @apply text-[20px] font-urbanist leading-[30px];
+  }
   .paragraph-grey {
     @apply text-[#7F8490] leading-[28px];
   }

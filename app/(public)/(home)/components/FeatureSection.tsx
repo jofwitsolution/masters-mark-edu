@@ -4,11 +4,13 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { CircleArrowRight } from "lucide-react";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 const FeatureSection = () => {
   return (
     <section className="bg-tertiary-200 padding-vertical">
-      <div className="max-width flex flex-col md:flex-row justify-between gap-6">
+      <div className="max-width flex flex-col md:flex-row justify-between gap-10 md:gap-6">
         <div className="md:w-[46%]">
           <motion.div
             initial="hidden"
@@ -71,6 +73,10 @@ const FeatureSection = () => {
                 the sky.
               </p>
             </div>
+
+            <Link href={"/"} className="mt-8">
+              <Button className="rounded-btn-2">Apply now</Button>
+            </Link>
           </div>
         </div>
       </div>

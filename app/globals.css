@@ -91,6 +91,10 @@ body {
     @apply bg-white text-secondary-500 rounded-s-[25px] rounded-e-[25px] border border-secondary hover:!bg-tertiary-100 py-[12px] px-[20px] sm:py-[23px] sm:px-[30px] font-semibold;
   }
 
+  .rounded-btn-3 {
+    @apply bg-white text-secondary-500 rounded-s-[25px] rounded-e-[25px] border border-secondary hover:!bg-tertiary-100 py-[12px] px-[20px] sm:py-[23px] sm:px-[30px] font-semibold;
+  }
+
   .btn-1 {
     @apply w-[280px] h-[55px] lg:w-[385px] lg:h-[78px] flex items-center justify-center font-semibold text-[20px] lg:text-[24px] font-urbanist;
   }
