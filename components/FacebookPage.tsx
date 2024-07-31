@@ -4,7 +4,7 @@ import React from "react";
 
 const FacebookPage = () => {
   return (
-    <section className="padding-vertical">
+    <section className="padding-vertical bg-tertiary-200">
       <div className="max-width flex justify-center">
         <div className="w-full md:w-[550px] h-[650px]">
           <iframe
