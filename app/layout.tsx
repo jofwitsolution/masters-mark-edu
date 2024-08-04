@@ -23,7 +23,7 @@ const gabriela = Gabriela({
 
 export const metadata: Metadata = {
   title: "Master's Mark Edu",
-  description: "Master's Mark Edu",
+  description: "Master's Mark Education",
 };
 
 export default function RootLayout({
