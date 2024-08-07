@@ -7,6 +7,7 @@ import EventSection from "./components/EventSection";
 import FeatureSection from "./components/FeatureSection";
 import BlogSection from "./components/BlogSection";
 import FacebookPage from "@/components/FacebookPage";
+import GallerySection from "./components/GallerySection";
 
 const Page = () => {
   return (
@@ -18,6 +19,7 @@ const Page = () => {
       <ReviewSection />
       <EventSection />
       <BlogSection />
+      <GallerySection />
       <FacebookPage />
     </div>
   );

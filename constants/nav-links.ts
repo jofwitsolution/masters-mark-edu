@@ -19,6 +19,11 @@ export const socialLinks: SocialLink[] = [
 
 export const navbarLinks: NavLink[] = [
   {
+    label: "Home",
+    route: "/",
+    icon: "",
+  },
+  {
     label: "About",
     route: "/about",
     icon: "",
@@ -36,6 +41,11 @@ export const navbarLinks: NavLink[] = [
   {
     label: "Blog",
     route: "/blog",
+    icon: "",
+  },
+  {
+    label: "Gallery",
+    route: "/gallery",
     icon: "",
   },
   {

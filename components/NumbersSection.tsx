@@ -23,10 +23,10 @@ const NumbersSection = () => {
             className="max-md:hidden"
           />
           <div className="flex gap-4">
-            <span className="">
+            <span className="max-md:hidden">
               <Users size={68} />
             </span>
-            <div className="flex flex-col font-inter">
+            <div className="flex flex-col max-md:items-center font-inter">
               <span className="text-[30px] sm:text-[43px] leading-[50px] font-bold">
                 25+
               </span>
@@ -49,8 +49,9 @@ const NumbersSection = () => {
               alt="award"
               width={68}
               height={59}
+              className="max-md:hidden"
             />
-            <div className="flex flex-col font-inter">
+            <div className="flex flex-col max-md:items-center font-inter">
               <span className="text-[30px] sm:text-[43px] leading-[50px] font-bold">
                 100+
               </span>
@@ -73,8 +74,9 @@ const NumbersSection = () => {
               alt="clients"
               width={68}
               height={59}
+              className="max-md:hidden"
             />
-            <div className="flex flex-col font-inter">
+            <div className="flex flex-col font-inter max-md:items-center">
               <span className="text-[30px] sm:text-[43px] leading-[50px] font-bold">
                 153+
               </span>
