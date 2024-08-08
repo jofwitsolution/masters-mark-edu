@@ -5,13 +5,13 @@ import React from "react";
 const SectionThree = () => {
   return (
     <section className="padding-vertical bg-tertiary-200">
-      <div className="max-width flex flex-wrap justify-center">
+      <div className="max-width flex flex-wrap justify-center max-sm:gap-y-4">
         <Link
           href={"/from-director-desk"}
           className="flex flex-col gap-2 hover:text-primary-100"
         >
           <Image
-            src={"/images/oluwayomi-onabanjo-short.jpg"}
+            src={"/images/oluwayomi-onabanjo-short.png"}
             alt="director"
             width={400}
             height={300}
