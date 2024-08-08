@@ -6,11 +6,14 @@
   .h1-gabriela {
     @apply font-gabriela text-[28px] leading-[36px] sm:text-[48px] sm:leading-[68px];
   }
+  .h2-gabriela {
+    @apply font-gabriela text-[28px] leading-[36px] sm:text-[38px] sm:leading-[58px];
+  }
   .h2-semibold {
     @apply text-[32px] md:text-[46px] font-semibold font-urbanist leading-[38px] md:leading-[54px];
   }
   .h3-semibold {
-    @apply text-[24px] font-medium font-urbanist leading-[30px];
+    @apply text-[24px] font-semibold font-urbanist leading-[30px];
   }
   .h3-medium {
     @apply text-[24px] font-medium font-urbanist leading-[30px];
