@@ -94,6 +94,8 @@ const Page = () => {
             </Link>
           </div>
         </div>
+
+        <div className="mt-8 border-black border-8 w-full" />
       </div>
     </section>
   );
