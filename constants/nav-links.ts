@@ -54,3 +54,36 @@ export const navbarLinks: NavLink[] = [
     icon: "",
   },
 ];
+
+export const adminNavLinks: DashboardNavLinks[] = [
+  {
+    route: "/mastersmark-admin",
+    label: "Dashboard",
+    icon: "/icons/dashboard.svg",
+  },
+  {
+    route: "/mastersmark-admin/posts",
+    label: "Posts",
+    icon: "/icons/posts.svg",
+  },
+  {
+    route: "/mastersmark-admin/events",
+    label: "Events",
+    icon: "/icons/events.svg",
+  },
+  {
+    route: "/mastersmark-admin/reviews",
+    label: "Reviews",
+    icon: "/icons/reviews.svg",
+  },
+  {
+    route: "/mastersmark-admin/team-members",
+    label: "Team Members",
+    icon: "/icons/team.svg",
+  },
+  {
+    route: "/mastersmark-admin/gallery",
+    label: "Gallery",
+    icon: "/icons/gallery.svg",
+  },
+];

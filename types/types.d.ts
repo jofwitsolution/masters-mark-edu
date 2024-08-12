@@ -9,3 +9,9 @@ type NavLink = {
   route: string;
   icon?: string;
 };
+
+type DashboardNavLinks = {
+  route: string;
+  label: string;
+  icon: string;
+};
