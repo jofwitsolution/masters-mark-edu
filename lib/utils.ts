@@ -74,3 +74,76 @@ export function getDate_2(date: string | Date): string {
 
   return `${month} ${day}${getDaySuffix(day)}, ${year}`;
 }
+
+function generateRandomChars(length: number): string {
+  const characters =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  let result = "";
+
+  for (let i = 0; i < length; i++) {
+    const randomIndex = Math.floor(Math.random() * characters.length);
+    result += characters[randomIndex];
+  }
+
+  return result;
+}
+
+export function createSlug(
+  originalValue: string,
+  joinCharSize: number
+): string {
+  // Remove special characters using regex
+  const sanitizedTitle = originalValue.replace(/[^\w\s]/g, "");
+  // Generate random alphanumeric string
+  const randomChars = generateRandomChars(joinCharSize);
+  // Replace spaces with dashes and attach random string
+  const modifiedValue = sanitizedTitle.replace(/\s+/g, "-") + "-" + randomChars;
+  return modifiedValue;
+}
+
+export function formatPostDate(input) {
+  const currentDate = new Date();
+  let targetDate;
+
+  if (typeof input === "string") {
+    targetDate = new Date(input);
+  } else if (input instanceof Date) {
+    targetDate = input;
+  } else if (typeof input === "number") {
+    targetDate = new Date(input);
+  } else {
+    return "Invalid input";
+  }
+
+  const diffInDays = Math.floor(
+    (currentDate - targetDate) / (1000 * 60 * 60 * 24)
+  );
+  const months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  const month = months[targetDate.getMonth()];
+  const day = targetDate.getDate();
+
+  let dateString = month + " " + day;
+
+  if (diffInDays === 0) {
+    dateString += " (today)";
+  } else if (diffInDays === 1) {
+    dateString += " (yesterday)";
+  } else {
+    dateString += " (" + diffInDays + " days ago)";
+  }
+
+  return dateString;
+}

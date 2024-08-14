@@ -1,6 +1,25 @@
-import { clerkMiddleware } from "@clerk/nextjs/server";
+import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 
-export default clerkMiddleware();
+const isPublicRoute = createRouteMatcher([
+  "/",
+  "/about",
+  "/contact",
+  "/blog(.*)",
+  "/events(.*)",
+  "/from-director-desk",
+  "/gallery",
+  "/management(.*)",
+  "/schools(.*)",
+  "/mastersmark-admin/sign-in(.*)",
+  "/mastersmark-admin/sign-up(.*)",
+  "/mastersmark-admin/log-out",
+]);
+
+export default clerkMiddleware((auth, request) => {
+  if (!isPublicRoute(request)) {
+    auth().protect();
+  }
+});
 
 export const config = {
   matcher: [

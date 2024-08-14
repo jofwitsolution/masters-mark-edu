@@ -3,6 +3,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { Inter, Urbanist, Gabriela } from "next/font/google";
 import "./globals.css";
 import "@/styles/style.css";
+import { Toaster } from "@/components/ui/sonner";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -23,8 +24,8 @@ const gabriela = Gabriela({
 });
 
 export const metadata: Metadata = {
-  title: "Master's Mark Edu",
-  description: "Master's Mark Education",
+  title: "Master'sMark",
+  description: "Master'sMark Education",
 };
 
 export default function RootLayout({
@@ -38,6 +39,7 @@ export default function RootLayout({
         <body
           className={`${inter.variable} ${urbanist.variable} ${gabriela.variable}`}
         >
+          <Toaster position="top-right" richColors className="z-[9500]" />
           {children}
         </body>
       </html>

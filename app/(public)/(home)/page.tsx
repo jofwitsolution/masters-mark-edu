@@ -13,7 +13,6 @@ const Page = () => {
   return (
     <div>
       <HomeHero />
-      <NumbersSection />
       <IntroSection />
       <FeatureSection />
       <ReviewSection />
