@@ -3,6 +3,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { Inter, Urbanist, Gabriela } from "next/font/google";
 import "./globals.css";
 import "@/styles/style.css";
+import "@/styles/prism.css";
 import { Toaster } from "@/components/ui/sonner";
 
 const inter = Inter({

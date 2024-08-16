@@ -1,6 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
-import Post from "@/components/forms/Post";
+import PostForm from "@/components/forms/PostForm";
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 
@@ -15,15 +15,15 @@ const Page = () => {
   if (!userId) redirect("/mastersmark-admin/sign-in");
 
   return (
-    <div>
+    <>
       <div className="flex justify-between">
         <h1 className="h1-medium">Add a new Blog Post</h1>
       </div>
 
       <div className="mt-9">
-        <Post />
+        <PostForm />
       </div>
-    </div>
+    </>
   );
 };
 

@@ -33,7 +33,8 @@ const DBLeft = () => {
       <div className="mt-12 flex w-full flex-col items-center gap-[1rem]">
         {adminNavLinks.map((item) => {
           const isActive =
-            (pathname.includes(item.route) && item.route.length > 1) ||
+            (pathname.startsWith(item.route) &&
+              item.route !== "/mastersmark-admin") ||
             pathname === item.route;
 
           return (

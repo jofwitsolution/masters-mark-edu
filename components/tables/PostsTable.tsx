@@ -13,9 +13,11 @@ import { fuzzyFilter } from "./helper";
 import { IPost } from "@/lib/models/Post";
 import { postColumns } from "./table-columns";
 
-const PostsTable = ({ posts }: { posts: IPost[] }) => {
+const PostsTable = ({ posts }: { posts: string }) => {
+  const parsedPosts = posts ? JSON.parse(posts) : [];
+
   const table = useReactTable({
-    data: posts,
+    data: parsedPosts,
     columns: postColumns,
     filterFns: {
       fuzzy: fuzzyFilter,
@@ -60,7 +62,7 @@ const PostsTable = ({ posts }: { posts: IPost[] }) => {
             ))}
           </tbody>
         </table>
-        {posts?.length > 10 && (
+        {parsedPosts?.length > 10 && (
           <div className="my-8 flex justify-center">
             <Pagination table={table} />
           </div>

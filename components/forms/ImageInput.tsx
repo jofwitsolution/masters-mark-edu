@@ -28,7 +28,7 @@ function ImageInput({ handleFileData, isDisabled }: Props) {
     accept: {
       "image/*": [".jpeg", ".png", ".jpg"],
     },
-    maxSize: 1024 * 3000,
+    maxSize: 1024 * 1000,
     maxFiles: 1,
     disabled: isDisabled,
   });
@@ -43,7 +43,7 @@ function ImageInput({ handleFileData, isDisabled }: Props) {
           {preview ? (
             <span className="font-semibold text-green-500">File added</span>
           ) : (
-            <span>Choose file (max: 3MB)</span>
+            <span>Choose file (max: 1MB)</span>
           )}
         </div>
       </div>

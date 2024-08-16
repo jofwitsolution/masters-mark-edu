@@ -20,48 +20,77 @@ import { PostSchema } from "@/lib/validations";
 import ImageInput from "./ImageInput";
 import { toast } from "sonner";
 import SpinCircleLoader from "../loaders/SpinCircleLoader";
-import { createPost } from "@/lib/actions/post.actions";
-import { useRouter } from "next/navigation";
+import { createPost, editPost } from "@/lib/actions/post.actions";
+import { usePathname, useRouter } from "next/navigation";
 
-const Post = () => {
+interface Props {
+  type?: string;
+  postDetails?: string;
+}
+
+const PostForm = ({ type, postDetails }: Props) => {
   const router = useRouter();
   const editorRef = useRef(null);
+  const pathname = usePathname();
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [image, setImage] = useState("");
   const [postImageError, setPostImageError] = useState(false);
 
+  const parsedPostDetails = postDetails && JSON.parse(postDetails || "");
+
   const form = useForm<z.infer<typeof PostSchema>>({
     resolver: zodResolver(PostSchema),
     defaultValues: {
-      title: "",
-      content: "",
+      title: parsedPostDetails?.title || "",
+      content: parsedPostDetails?.content || "",
     },
   });
 
   async function onSubmit(values: z.infer<typeof PostSchema>) {
     setIsSubmitting(true);
 
-    if (!image) {
-      setPostImageError(true);
-      toast.error("Post image is required", {
-        position: "bottom-center",
+    if (type === "edit") {
+      // Edit Action Here
+      const result = await editPost({
+        postId: parsedPostDetails._id,
+        title: values.title,
+        content: values.content,
+        image,
       });
-      return;
-    }
 
-    const result = await createPost({
-      title: values.title,
-      content: values.content,
-      image,
-    });
-    if (result?.error) {
-      toast.error(result.error);
+      if (result?.error) {
+        toast.error(result.error);
+        setIsSubmitting(false);
+      } else {
+        const post = JSON.parse(result.post as any);
+        toast.success("Post edited successfully");
+        router.push(`/blog/${post.slug}`);
+      }
     } else {
-      toast.success("Post created successfully");
-      router.push("/mastersmark-admin/posts");
+      // Create New Post
+      if (!image) {
+        setPostImageError(true);
+        toast.error("Post image is required", {
+          position: "bottom-center",
+        });
+        return;
+      }
+
+      const result = await createPost({
+        title: values.title,
+        content: values.content,
+        image,
+        path: pathname,
+      });
+      if (result?.error) {
+        toast.error(result.error);
+        setIsSubmitting(false);
+      } else {
+        toast.success("Post created successfully");
+        router.push("/mastersmark-admin/posts");
+      }
     }
-    setIsSubmitting(false);
   }
 
   return (
@@ -95,7 +124,12 @@ const Post = () => {
 
         <div className="flex w-full flex-col">
           <FormLabel className="paragraph-semibold">
-            Post Image <span className="text-primary">*</span>
+            Post Image{" "}
+            <span className="text-primary">
+              {type === "edit"
+                ? "(Post image is not required, upload only if you wish to change the existing one.)"
+                : "*"}
+            </span>
           </FormLabel>
           <div className="mt-3.5 border">
             <ImageInput
@@ -132,7 +166,7 @@ const Post = () => {
                   }}
                   onBlur={field.onBlur}
                   onEditorChange={(content) => field.onChange(content)}
-                  initialValue={""}
+                  initialValue={parsedPostDetails?.content || ""}
                   init={{
                     height: 400,
                     menubar: true,
@@ -156,7 +190,6 @@ const Post = () => {
                     toolbar: [
                       "undo redo | styles | bold italic lineheight | alignleft aligncenter alignright| bullist numlist indent outdent | link image",
                     ],
-                    content_style: "body { font-family:Inter; font-size:16px }",
                   }}
                 />
               </FormControl>
@@ -175,7 +208,11 @@ const Post = () => {
             className="w-fit text-white"
             disabled={isSubmitting}
           >
-            Publish
+            {isSubmitting ? (
+              <>{type === "edit" ? "Editing..." : "Publishing..."}</>
+            ) : (
+              <>{type === "edit" ? "Edit Post" : "Publish"}</>
+            )}
           </Button>
           {isSubmitting && <SpinCircleLoader />}
         </div>
@@ -184,4 +221,4 @@ const Post = () => {
   );
 };
 
-export default Post;
+export default PostForm;

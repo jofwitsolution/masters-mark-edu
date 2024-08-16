@@ -29,7 +29,7 @@ const Page = async () => {
       </div>
 
       <div className="mt-6">
-        <PostsTable posts={postResult.posts ?? []} />
+        <PostsTable posts={JSON.stringify(postResult.posts)} />
       </div>
     </div>
   );

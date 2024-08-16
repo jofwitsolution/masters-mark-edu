@@ -1,6 +1,7 @@
 import { Schema, models, model, Document } from "mongoose";
 
-export interface IPost extends Document {
+export interface ITeam extends Document {
+  _id: string;
   name: string;
   role: string;
   slug: string;

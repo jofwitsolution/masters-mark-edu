@@ -2,6 +2,7 @@ import { createColumnHelper } from "@tanstack/react-table";
 import { IPost } from "@/lib/models/Post";
 import { getDate_1 } from "@/lib/utils";
 import Link from "next/link";
+import PostDeleteAction from "./PostDeleteAction";
 
 const postColumnHelper = createColumnHelper<IPost>();
 
@@ -39,6 +40,15 @@ export const postColumns = [
       const date = getDate_1(info.getValue());
 
       return <span className="">{date}</span>;
+    },
+  }),
+  postColumnHelper.accessor("_id", {
+    id: "_id",
+    header: "Action",
+    cell: (info) => {
+      const post = info.row.original;
+
+      return <PostDeleteAction post={post} />;
     },
   }),
 ];
