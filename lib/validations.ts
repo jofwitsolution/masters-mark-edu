@@ -27,3 +27,18 @@ export const EventSchema = z.object({
   startDate: z.date().optional(),
   endDate: z.date().optional(),
 });
+
+export const TeamMemberSchema = z.object({
+  name: z
+    .string()
+    .min(5, "Name cannot be less than 5 char.")
+    .max(60, "Name cannot exceed 60 char."),
+  role: z.string().min(3, "Role cannot be less than 3 char."),
+  bio: z.string().optional(),
+  rank: z
+    .string({
+      required_error: "Rank is required",
+      invalid_type_error: "Rank is required",
+    })
+    .min(1, "Rank is required"),
+});
