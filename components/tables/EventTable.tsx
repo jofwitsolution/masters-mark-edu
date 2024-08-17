@@ -10,14 +10,14 @@ import {
 } from "@tanstack/react-table";
 import Pagination from "./Pagination";
 import { fuzzyFilter } from "./helper";
-import { postColumns } from "./table-columns";
+import { eventColumns } from "./table-columns";
 
-const PostsTable = ({ posts }: { posts: string }) => {
-  const parsedPosts = posts ? JSON.parse(posts) : [];
+const EventTable = ({ events }: { events: string }) => {
+  const parsedEvents = events ? JSON.parse(events) : [];
 
   const table = useReactTable({
-    data: parsedPosts,
-    columns: postColumns,
+    data: parsedEvents,
+    columns: eventColumns,
     filterFns: {
       fuzzy: fuzzyFilter,
     },
@@ -29,7 +29,7 @@ const PostsTable = ({ posts }: { posts: string }) => {
 
   return (
     <div className="w-full">
-      <h3 className="font-medium mb-2 p-2 pt-4">Post History</h3>
+      <h3 className="font-medium mb-2 p-2 pt-4">Event History</h3>
       <div className="overflow-x-auto">
         <table className="w-full max-sm:text-[0.75rem]">
           <thead className="font-medium">
@@ -61,7 +61,7 @@ const PostsTable = ({ posts }: { posts: string }) => {
             ))}
           </tbody>
         </table>
-        {parsedPosts?.length > 10 && (
+        {parsedEvents?.length > 10 && (
           <div className="my-8 flex justify-center">
             <Pagination table={table} />
           </div>
@@ -71,4 +71,4 @@ const PostsTable = ({ posts }: { posts: string }) => {
   );
 };
 
-export default PostsTable;
+export default EventTable;
