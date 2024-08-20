@@ -1,8 +1,15 @@
+import { getTeamMembers } from "@/lib/actions/team.actions";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const Page = () => {
+const Page = async () => {
+  const result = await getTeamMembers();
+  if (result.error) {
+    console.error("Error fetching team members:", result.error);
+    return null;
+  }
+
   return (
     <section>
       <div className="bg-tertiary-200 py-4 md:py-10">
@@ -18,65 +25,24 @@ const Page = () => {
 
         <div className="flex justify-between">
           <div className="mt-10 flex flex-wrap gap-8 max-w-[700px]">
-            <div className="flex flex-col gap-2 w-max">
-              <Image
-                src={"/images/oluwayomi-onabanjo-short.png"}
-                alt="director"
-                width={300}
-                height={240}
-                className="w-[300px] h-[240px]"
-              />
-              <div className="flex flex-col gap-1">
-                <h2 className="h3-semibold">Oluwayomi Onabanjo</h2>
-                <span>Director</span>
+            {result?.members.slice(0, 2).map((member) => (
+              <div key={member.id} className="flex flex-col gap-2 w-[260px]">
+                <Image
+                  src={member.imageUrl}
+                  alt={member.name}
+                  width={260}
+                  height={300}
+                  className="w-[260px] h-[300px]"
+                />
+                <div className="flex flex-col gap-1">
+                  <h2 className="sm:text-[19px] text-wrap font-semibold font-urbanist leading-[30px]">
+                    {member.name}
+                  </h2>
+                  <span className="text-wrap">{member.role}</span>
+                </div>
+                <div className="border-2" />
               </div>
-              <div className="border-2" />
-            </div>
-
-            <div className="flex flex-col gap-2 w-max">
-              <Image
-                src={"/images/arc-olugbenga-onabanjo.png"}
-                alt="director"
-                width={300}
-                height={240}
-                className="w-[300px] h-[240px]"
-              />
-              <div className="flex flex-col gap-1">
-                <h2 className="h3-semibold">ARC Olugbenga Onabanjo</h2>
-                <span>Chairman</span>
-              </div>
-              <div className="border-2" />
-            </div>
-
-            <div className="flex flex-col gap-2 w-max">
-              <Image
-                src={"/images/mrs-olufunmilola-oshinloye.png"}
-                alt="head-of-education"
-                width={300}
-                height={240}
-                className="w-[300px] h-[240px]"
-              />
-              <div className="flex flex-col gap-1">
-                <h2 className="h3-semibold">Mrs Olufunmiloa Oshinloye</h2>
-                <span>Head of Education</span>
-              </div>
-              <div className="border-2" />
-            </div>
-
-            <div className="flex flex-col gap-2 w-max">
-              <Image
-                src={"/images/ayokunle-okunowo.png"}
-                alt="senior-admin-personel"
-                width={300}
-                height={240}
-                className="w-[300px] h-[240px]"
-              />
-              <div className="flex flex-col gap-1">
-                <h2 className="h3-semibold">Mr Ayokunle Okunowo</h2>
-                <span>Senior Admin Personnel</span>
-              </div>
-              <div className="border-2" />
-            </div>
+            ))}
           </div>
 
           <div className="max-lg:hidden w-[250px] flex flex-col py-8">
@@ -95,6 +61,26 @@ const Page = () => {
           </div>
         </div>
 
+        <div className="mt-14 flex flex-wrap gap-8">
+          {result?.members.slice(2).map((member) => (
+            <div key={member.id} className="flex flex-col gap-2 w-[230px]">
+              <Image
+                src={member.imageUrl}
+                alt={member.name}
+                width={230}
+                height={270}
+                className="w-[230px] h-[270px]"
+              />
+              <div className="flex flex-col gap-1">
+                <h2 className="sm:text-[19px] text-wrap font-semibold font-urbanist">
+                  {member.name}
+                </h2>
+                <span className="text-wrap">{member.role}</span>
+              </div>
+              <div className="border-2" />
+            </div>
+          ))}
+        </div>
         <div className="mt-8 border-black border-8 w-full" />
       </div>
     </section>

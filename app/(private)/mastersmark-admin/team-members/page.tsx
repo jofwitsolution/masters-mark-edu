@@ -4,8 +4,8 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { auth } from "@clerk/nextjs/server";
-import EventTable from "@/components/tables/EventTable";
-import { getEvents } from "@/lib/actions/event.actions";
+import MemberTable from "@/components/tables/MemberTable";
+import { getTeamMembers } from "@/lib/actions/team.actions";
 
 export const metadata: Metadata = {
   title: "Team Members | Master'sMark",
@@ -17,7 +17,7 @@ const Page = async () => {
 
   if (!userId) redirect("/mastersmark-admin/sign-in");
 
-  const eventResult = await getEvents();
+  const memberResult = await getTeamMembers();
 
   return (
     <div>
@@ -29,7 +29,7 @@ const Page = async () => {
       </div>
 
       <div className="mt-6">
-        <EventTable events={JSON.stringify(eventResult.events)} />
+        <MemberTable members={JSON.stringify(memberResult.members)} />
       </div>
     </div>
   );

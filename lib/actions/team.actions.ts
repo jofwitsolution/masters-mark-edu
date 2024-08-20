@@ -103,7 +103,7 @@ export const getTeamMembers = async () => {
   try {
     await connectToDatabase();
 
-    const members = await TeamMember.find({});
+    const members = await TeamMember.find({}).sort({ rank: 1 });
 
     return { members };
   } catch (error) {
