@@ -20,10 +20,10 @@ const Footer = () => {
               />
             </Link>
             <p className="">
-              Master’smark is a quintessential educational facility saddled with
-              a mission of laying a solid foundation in each child by developing
-              their social, educational, physical and psychological well-being,
-              thereby developing the total child.
+              <strong>Master’smark</strong> is a quintessential educational
+              facility saddled with a mission of laying a solid foundation in
+              each child by developing their social, educational, physical and
+              psychological well-being, thereby developing the total child.
             </p>
             <div className="flex gap-6 items-center">
               {socialLinks.map((item) => (
