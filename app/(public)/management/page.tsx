@@ -72,10 +72,10 @@ const Page = async () => {
                 className="w-[230px] h-[270px]"
               />
               <div className="flex flex-col gap-1">
-                <h2 className="sm:text-[19px] text-wrap font-semibold font-urbanist">
+                <h2 className="sm:text-[19px] text-wrap font-semibold capitalize font-urbanist">
                   {member.name}
                 </h2>
-                <span className="text-wrap">{member.role}</span>
+                <span className="text-wrap capitalize">{member.role}</span>
               </div>
               <div className="border-2" />
             </div>

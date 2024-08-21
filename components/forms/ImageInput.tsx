@@ -6,9 +6,16 @@ import { useDropzone } from "react-dropzone";
 interface Props {
   handleFileData: (data: string | ArrayBuffer | null) => void;
   isDisabled: boolean;
+  maxSize?: number;
+  maxSizeLabel?: string;
 }
 
-function ImageInput({ handleFileData, isDisabled }: Props) {
+function ImageInput({
+  handleFileData,
+  isDisabled,
+  maxSize = 1000,
+  maxSizeLabel = "1MB",
+}: Props) {
   const onDrop = useCallback(
     (acceptedFiles: Array<File>) => {
       const file = new FileReader();
@@ -28,7 +35,7 @@ function ImageInput({ handleFileData, isDisabled }: Props) {
     accept: {
       "image/*": [".jpeg", ".png", ".jpg"],
     },
-    maxSize: 1024 * 1000,
+    maxSize: 1024 * maxSize,
     maxFiles: 1,
     disabled: isDisabled,
   });
@@ -43,7 +50,7 @@ function ImageInput({ handleFileData, isDisabled }: Props) {
           {preview ? (
             <span className="font-semibold text-green-500">File added</span>
           ) : (
-            <span>Choose file (max: 1MB)</span>
+            <span>Choose file (max: {maxSizeLabel})</span>
           )}
         </div>
       </div>

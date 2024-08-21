@@ -19,6 +19,10 @@ const Page = async () => {
 
   const memberResult = await getTeamMembers();
 
+  async function sanitizeData(data: any) {
+    return JSON.parse(JSON.stringify(data));
+  }
+
   return (
     <div>
       <div className="flex justify-between">
@@ -29,7 +33,7 @@ const Page = async () => {
       </div>
 
       <div className="mt-6">
-        <MemberTable members={JSON.stringify(memberResult.members)} />
+        <MemberTable members={await sanitizeData(memberResult.members)} />
       </div>
     </div>
   );

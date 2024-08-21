@@ -178,6 +178,8 @@ const MemberForm = ({ type, memberDetails }: Props) => {
                 setImage(data);
                 setImageError(false);
               }}
+              maxSize={3000}
+              maxSizeLabel="3MB"
             />
           </div>
           {imageError && (

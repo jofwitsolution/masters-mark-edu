@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import {
   getCoreRowModel,
   useReactTable,
@@ -11,16 +11,21 @@ import {
 import Pagination from "./Pagination";
 import { fuzzyFilter } from "./helper";
 import { memberColumns } from "./table-columns";
+import { ITeamMember } from "@/lib/models/TeamMember";
 
-const MemberTable = ({ members }: { members: string }) => {
-  const parsedMembers = members ? JSON.parse(members) : [];
+const MemberTable = ({ members }: { members: ITeamMember[] }) => {
+  const [globalFilter, setGlobalFilter] = useState("");
 
   const table = useReactTable({
-    data: parsedMembers,
+    data: members,
     columns: memberColumns,
     filterFns: {
       fuzzy: fuzzyFilter,
     },
+    state: {
+      globalFilter,
+    },
+    onGlobalFilterChange: setGlobalFilter,
     globalFilterFn: fuzzyFilter,
     getFilteredRowModel: getFilteredRowModel(),
     getCoreRowModel: getCoreRowModel(),
@@ -61,7 +66,7 @@ const MemberTable = ({ members }: { members: string }) => {
             ))}
           </tbody>
         </table>
-        {parsedMembers?.length > 10 && (
+        {members?.length > 10 && (
           <div className="my-8 flex justify-center">
             <Pagination table={table} />
           </div>
