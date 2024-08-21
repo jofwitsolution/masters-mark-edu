@@ -5,6 +5,10 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+export async function sanitizeData(data: any) {
+  return JSON.parse(JSON.stringify(data));
+}
+
 export function getDate_1(date: string | Date) {
   const months = [
     "Jan",

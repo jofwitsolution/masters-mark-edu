@@ -13,7 +13,7 @@ const Courses = () => {
           className="flex flex-col gap-2 w-[350px] group"
         >
           <Image
-            src={"/images/creche.png"}
+            src={"/images/creche-1.png"}
             alt="image"
             width={350}
             height={300}
@@ -32,7 +32,7 @@ const Courses = () => {
           className="flex flex-col gap-2 w-[350px] group"
         >
           <Image
-            src={"/images/pre-school.png"}
+            src={"/images/preschool-1.png"}
             alt="image"
             width={350}
             height={300}
@@ -51,7 +51,7 @@ const Courses = () => {
           className="flex flex-col gap-2 w-[350px] group"
         >
           <Image
-            src={"/images/primary.jpg"}
+            src={"/images/primary-1.jpg"}
             alt="image"
             width={350}
             height={300}
@@ -60,7 +60,10 @@ const Courses = () => {
           <h3 className="mt-1 h3-semibold text-primary group-hover:underline">
             Primary School
           </h3>
-          <p className="font-inter leading-[28px]">Primary school</p>
+          <p className="font-inter leading-[28px]">
+            Experience the uniqueness of <strong>Master’sMark</strong> Primary
+            School, where every child is encouraged to reach new heights.
+          </p>
         </Link>
         <Link
           href={"/schools/after-school-club"}

@@ -6,6 +6,7 @@ import { redirect } from "next/navigation";
 import { auth } from "@clerk/nextjs/server";
 import MemberTable from "@/components/tables/MemberTable";
 import { getTeamMembers } from "@/lib/actions/team.actions";
+import { sanitizeData } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Team Members | Master'sMark",
@@ -18,10 +19,6 @@ const Page = async () => {
   if (!userId) redirect("/mastersmark-admin/sign-in");
 
   const memberResult = await getTeamMembers();
-
-  async function sanitizeData(data: any) {
-    return JSON.parse(JSON.stringify(data));
-  }
 
   return (
     <div>
