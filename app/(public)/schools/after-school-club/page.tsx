@@ -1,4 +1,5 @@
 import Entrance from "@/components/Entrance";
+import { Disc } from "lucide-react";
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -18,31 +19,47 @@ const Page = () => {
         </div>
       </section>
       <div className="max-width pt-7">
-        <div className="flex gap-2 flex-wrap items-start">
+        <div className="w-full h-[300px] sm:h-[600px] relative mb-8">
           <Image
-            src={"/images/primary-1.jpg"}
-            alt="primary"
+            src={"/images/afterschool-3.jpg"}
+            fill
+            alt="afterschoolclub"
+            className="object-cover"
+          />
+        </div>
+        <div className="flex max-xs:justify-center gap-2 flex-wrap items-start">
+          <Image
+            src={"/images/afterschool-1.jpg"}
+            alt="afterschool"
             width={300}
             height={239}
             className=""
           />
           <Image
-            src={"/images/primary-2.jpg"}
-            alt="primary"
+            src={"/images/afterschool-6.jpg"}
+            alt="afterschool"
+            width={300}
+            height={239}
+            className=""
+          />
+
+          <Image
+            src={"/images/afterschool-4.jpg"}
+            alt="afterschool"
             width={300}
             height={239}
             className=""
           />
           <Image
-            src={"/images/primary-3.jpg"}
-            alt="primary"
+            src={"/images/afterschool-5.jpg"}
+            alt="afterschool"
             width={300}
             height={239}
             className=""
           />
           <Image
-            src={"/images/primary-4.jpg"}
-            alt="primary"
+            src={"/images/afterschool-2.jpg"}
+            alt="afterschool"
             width={300}
             height={239}
             className=""
@@ -51,41 +68,81 @@ const Page = () => {
 
         <div className="mt-8 leading-[28px] font-inter">
           <p>
-            Welcome to Master’s Mark Primary School, where we are dedicated to
-            cultivating an environment that not only promotes academic
-            excellence but also nurtures each child’s unique potential.
+            The Afterschool club at <strong>MASTER’SMARK</strong> gives a
+            wholistic learning to the pupil/student. The club employs activities
+            that develops the faculties of the total child in their mainstream
+            academics, social skills, and co-curricula activities.
           </p>
           <br />
 
-          <p>
-            We recognize that every student is special, and we are committed to
-            helping them shine in their own distinctive way.
-          </p>
+          <p>THESE SERVICES STAND OUT AT OUR AFTERSCHOOL CLUB:</p>
+          <ul className="list-disc ml-6">
+            <li>Tutorials</li>
+            <li>Social & Emotional development activities</li>
+            <li>Care-giving</li>
+            <li>Games (Indoor and Outdoor)</li>
+            <li>School runs (pick up and drop off)</li>
+            <li>Lunch</li>
+            <li>Outing/Excursion</li>
+          </ul>
           <br />
-
           <p>
-            At Master’s Mark, we create a nurturing environment where every
-            child is welcomed with kindness, supported with compassion, and
-            guided with care. Our goal is to make each day a meaningful step in
-            their journey of growth and discovery.
+            The club opens both during academic calendar (Week days and
+            Saturdays) and holiday seasons (Week days only)
           </p>
+          <p>ACTIVITIES INCLUDE:</p>
+          <ul className="list-disc ml-6">
+            <li>Tutorials</li>
+            <li>Supervision of Assignments</li>
+            <li>
+              Preparation for Entrance Examinations into Secondary Schools
+            </li>
+            <li>French Lessons</li>
+            <li>Music lessons</li>
+            <li>Swimmimg</li>
+            <li>Vocational skills</li>
+            <li>Dance</li>
+            <li>Mentoring and career Talks</li>
+            <li>Educational ToursIndoor & Outdoor games</li>
+            <li>Spelling BeeArts & Crafts</li>
+          </ul>
           <br />
-
-          <p>
-            We believe that true education ignites creativity, builds
-            resilience, and strengthens character. Through our holistic
-            approach, we ensure that children not only excel academically but
-            also develop the confidence, empathy, and determination to make a
-            positive impact in the world.
-          </p>
-
+          <h2 className="font-semibold mb-2">THE CLUB HAS THREE CATEGORIES</h2>
+          <div className="flex gap-2 items-center">
+            <Disc /> <span>Main After School.</span>
+          </div>
+          <ul className="list-disc ml-6">
+            <li>
+              Starts daily from 2:30 pm (Registration is required for this
+              category.)
+            </li>
+            <li>Late pick up services</li>
+            <li>One off service available</li>
+          </ul>
           <br />
-
-          <p>
-            Experience the uniqueness of Master’s Mark Primary School, where
-            learning is an adventure, possibilities are endless, and every child
-            is encouraged to reach new heights.
-          </p>
+          <div className="flex gap-2 items-center">
+            <Disc /> <span>Holiday Programs</span>
+          </div>
+          <ul className="list-disc ml-6">
+            <li>1st Term Holiday – Activities (Play, and Caregiving)</li>
+            <li>2nd Term Holiday – Activities (Play and Caregiving)</li>
+            <li>
+              3rd Term Holiday – (long term break) – Activities and School work
+              in preparation for the next session
+            </li>
+          </ul>
+          <br />
+          <div className="flex gap-2 items-center">
+            <Disc /> <span>Saturday Programs</span>
+          </div>
+          <ul className="list-disc ml-6">
+            <li>
+              Every Saturday (during the academic term except the last Saturday
+              of the month)10:00 am – 4:00 pm
+            </li>
+            <li>One off service available</li>
+          </ul>
+          <br />
         </div>
       </div>
 
