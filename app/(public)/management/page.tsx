@@ -1,7 +1,24 @@
 import { getTeamMembers } from "@/lib/actions/team.actions";
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+
+export const metadata: Metadata = {
+  title: "Management Team | Master'sMark",
+  description: "Master'sMark Management Team",
+  keywords: [
+    "mastersmark",
+    "master'smark",
+    "education",
+    "masters mark education",
+    "child education",
+    "masters mark child education",
+    "management",
+    "master'smark management team",
+    "master'smark management",
+  ],
+};
 
 const Page = async () => {
   const result = await getTeamMembers();

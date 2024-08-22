@@ -7,6 +7,22 @@ import React from "react";
 export const metadata: Metadata = {
   title: "Creche School | Master'sMark",
   description: "Master'sMark Education Program",
+  keywords: [
+    "mastersmark",
+    "master'smark",
+    "education",
+    "masters mark education",
+    "child education",
+    "masters mark child education",
+    "management",
+    "master'smark management team",
+    "master'smark programs",
+    "master'smark courses",
+    "master'smark course",
+    "masters mark schools",
+    "mastersmark schools",
+    "masters mark creche",
+  ],
 };
 
 const Page = () => {
