@@ -38,8 +38,9 @@ const FeatureSection = () => {
                 <CircleArrowRight />
               </span>
               <p className="paragraph-grey">
-                Every child is a unique masterpiece at master&apos;s mark, where
-                we paint futures bright with learning and laughter.
+                Every child is a unique masterpiece at{" "}
+                <strong>master&apos;smark</strong>, where we paint futures
+                bright with learning and laughter.
               </p>
             </div>
             <div className="flex gap-2 items-start font-inter">
@@ -48,8 +49,8 @@ const FeatureSection = () => {
               </span>
 
               <p className="paragraph-grey">
-                At master&apos;s mark, we nurture young minds to bloom into
-                their fullest potential.
+                At <strong>master&apos;smark</strong>, we nurture young minds to
+                bloom into their fullest potential.
               </p>
             </div>
             <div className="flex gap-2 items-start font-inter">
@@ -68,9 +69,9 @@ const FeatureSection = () => {
               </span>
 
               <p className="paragraph-grey">
-                In the garden of childhood, master&apos;s mark attends to each
-                seedling with care, helping them grow strong roots and reach for
-                the sky.
+                In the garden of childhood, <strong>master&apos;smark</strong>{" "}
+                attends to each seedling with care, helping them grow strong
+                roots and reach for the sky.
               </p>
             </div>
 

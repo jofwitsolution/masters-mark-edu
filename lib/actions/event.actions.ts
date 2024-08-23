@@ -15,6 +15,7 @@ export const createEvent = async ({
   endDate,
   path,
   image,
+  media,
 }: {
   title: string;
   content: string;
@@ -24,6 +25,7 @@ export const createEvent = async ({
   endDate: Date;
   path: string;
   image: string;
+  media: { url?: string; publicId?: string }[];
 }) => {
   try {
     await connectToDatabase();
@@ -47,6 +49,7 @@ export const createEvent = async ({
         endDate,
         imageUrl: uploadResult.secure_url,
         imagePublicId: uploadResult.public_id,
+        media,
       });
 
       revalidatePath(path);
@@ -66,6 +69,7 @@ export const editEvent = async ({
   startDate,
   endDate,
   image,
+  media,
 }: {
   eventId: string;
   title: string;
@@ -75,6 +79,7 @@ export const editEvent = async ({
   startDate: Date;
   endDate: Date;
   image: string;
+  media: { url?: string; publicId?: string }[];
 }) => {
   try {
     await connectToDatabase();
@@ -85,6 +90,9 @@ export const editEvent = async ({
     }
 
     if (image) {
+      // delete existing cover image
+      await cloudinary.uploader.destroy(event.imagePublicId);
+
       const uploadResult = await cloudinary.uploader.upload(image as string, {
         folder: "event-images",
       });
@@ -99,6 +107,7 @@ export const editEvent = async ({
     event.venue = venue;
     event.startDate = startDate;
     event.endDate = endDate;
+    event.media = media;
 
     await event.save();
 

@@ -22,6 +22,7 @@ import { toast } from "sonner";
 import SpinCircleLoader from "../loaders/SpinCircleLoader";
 import { createPost, editPost } from "@/lib/actions/post.actions";
 import { usePathname, useRouter } from "next/navigation";
+import { plugins, postToolbar } from "./tinymce";
 
 interface Props {
   type?: string;
@@ -170,26 +171,8 @@ const PostForm = ({ type, postDetails }: Props) => {
                   init={{
                     height: 400,
                     menubar: true,
-                    plugins: [
-                      "advlist",
-                      "autolink",
-                      "lists",
-                      "link",
-                      "image",
-                      "charmap",
-                      "preview",
-                      "anchor",
-                      "searchreplace",
-                      "visualblocks",
-                      "codesample",
-                      "fullscreen",
-                      "insertdatetime",
-                      "media",
-                      "table",
-                    ],
-                    toolbar: [
-                      "undo redo | styles | bold italic lineheight | alignleft aligncenter alignright| bullist numlist indent outdent | link image",
-                    ],
+                    plugins: plugins,
+                    toolbar: postToolbar,
                   }}
                 />
               </FormControl>

@@ -9,12 +9,12 @@ const SectionTwo = () => {
             <h1 className="text-white h3-semibold">Our Aim</h1>
           </div>
           <p className="paragraph-work_sans leading-[28px]">
-            At master’smark we believe that children learn from everything that
-            happens around them. We know that they learn best when they are
-            involved and interested, secure and confident in themselves and
-            their abilities. For these reasons our aim is to provide a
-            stimulating, safe, happy environment; an environment where all
-            children learn and impart their generation.
+            At <strong>Master’smark</strong> we believe that children learn from
+            everything that happens around them. We know that they learn best
+            when they are involved and interested, secure and confident in
+            themselves and their abilities. For these reasons our aim is to
+            provide a stimulating, safe, happy environment; an environment where
+            all children learn and impart their generation.
           </p>
         </div>
         <div className="flex-1">

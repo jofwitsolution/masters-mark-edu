@@ -6,6 +6,7 @@ import { redirect } from "next/navigation";
 import { auth } from "@clerk/nextjs/server";
 import PostsTable from "@/components/tables/PostsTable";
 import { getPosts } from "@/lib/actions/post.actions";
+import { sanitizeData } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Posts | Master'sMark",
@@ -29,7 +30,7 @@ const Page = async () => {
       </div>
 
       <div className="mt-6">
-        <PostsTable posts={JSON.stringify(postResult.posts)} />
+        <PostsTable posts={await sanitizeData(postResult.posts)} />
       </div>
     </div>
   );

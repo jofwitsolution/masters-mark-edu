@@ -27,14 +27,8 @@ const EventCard = ({ event }: { event: IEvent }) => {
             <div className="flex max-xs:text-[12px] justify-between gap-4 items-center text-gray-500 text-[14px]">
               <div className="flex gap-4">
                 <span className="flex gap-2 items-center btn-hover-style">
-                  <Image
-                    src="/icons/comment.svg"
-                    width={18}
-                    height={18}
-                    alt="comment"
-                  />
-                  <span>
-                    6 <span className="">Comments</span>
+                  <span className="font-inter font-medium">
+                    {event.organizer}
                   </span>
                 </span>
               </div>

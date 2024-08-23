@@ -11,12 +11,11 @@ import {
 import Pagination from "./Pagination";
 import { fuzzyFilter } from "./helper";
 import { eventColumns } from "./table-columns";
+import { IEvent } from "@/lib/models/Event";
 
-const EventTable = ({ events }: { events: string }) => {
-  const parsedEvents = events ? JSON.parse(events) : [];
-
+const EventTable = ({ events }: { events: IEvent[] }) => {
   const table = useReactTable({
-    data: parsedEvents,
+    data: events,
     columns: eventColumns,
     filterFns: {
       fuzzy: fuzzyFilter,
@@ -61,7 +60,7 @@ const EventTable = ({ events }: { events: string }) => {
             ))}
           </tbody>
         </table>
-        {parsedEvents?.length > 10 && (
+        {events?.length > 10 && (
           <div className="my-8 flex justify-center">
             <Pagination table={table} />
           </div>

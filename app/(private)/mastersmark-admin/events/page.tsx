@@ -6,6 +6,7 @@ import { redirect } from "next/navigation";
 import { auth } from "@clerk/nextjs/server";
 import EventTable from "@/components/tables/EventTable";
 import { getEvents } from "@/lib/actions/event.actions";
+import { sanitizeData } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Events | Master'sMark",
@@ -29,7 +30,7 @@ const Page = async () => {
       </div>
 
       <div className="mt-6">
-        <EventTable events={JSON.stringify(eventResult.events)} />
+        <EventTable events={await sanitizeData(eventResult.events)} />
       </div>
     </div>
   );

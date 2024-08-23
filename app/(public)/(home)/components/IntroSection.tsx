@@ -15,12 +15,12 @@ const IntroSection = () => {
           <div className="md:w-[40%]">
             <h2 className="mb-6 h2-semibold">Master&apos;s Mark Education</h2>
             <p className="mb-6 font-inter leading-[28px]">
-              Master’smark is a quintessential educational facility saddled with
-              a mission of laying a solid foundation in each child by developing
-              their social, educational, physical and psychological well-being,
-              thereby developing the total child. Our program is designed to
-              prepare children for the future, seeks to encourage the
-              development of their inherent gifts
+              <strong>Master’smark</strong> is a quintessential educational
+              facility saddled with a mission of laying a solid foundation in
+              each child by developing their social, educational, physical and
+              psychological well-being, thereby developing the total child. Our
+              program is designed to prepare children for the future, seeks to
+              encourage the development of their inherent gifts
             </p>
 
             <Link href="/about">
@@ -57,9 +57,9 @@ const IntroSection = () => {
           <div className="md:w-[40%]">
             <h2 className="mb-6 h2-semibold">Our School Programmes</h2>
             <p className="mb-6 font-inter leading-[28px]">
-              At master&apos;smark, we recognize that every child is unique,
-              with individual needs, interests, and learning styles. Our
-              programs are carefully tailored to meet these diverse
+              At <strong>Master&apos;smark</strong>, we recognize that every
+              child is unique, with individual needs, interests, and learning
+              styles. Our programs are carefully tailored to meet these diverse
               requirements, ensuring each child receives the support and
               stimulation they need to flourish. We create dynamic learning
               environments where children can explore, discover, and grow at

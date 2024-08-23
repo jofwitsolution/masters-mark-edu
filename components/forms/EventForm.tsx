@@ -23,6 +23,14 @@ import { usePathname, useRouter } from "next/navigation";
 import DateInput from "../ui/date-input";
 import { createEvent, editEvent } from "@/lib/actions/event.actions";
 import ImageInput from "./ImageInput";
+import ImageUploader from "./ImageUploader";
+import { deleteFile } from "@/lib/actions/image.actions";
+import {
+  eventContentStyle,
+  eventStyleFormats,
+  eventToolbar,
+  plugins,
+} from "./tinymce";
 
 interface Props {
   type?: "edit" | "add";
@@ -45,6 +53,7 @@ const EventForm = ({ type, eventDetails }: Props) => {
     defaultValues: {
       title: parsedEventDetails?.title || "",
       content: parsedEventDetails?.content || "",
+      media: parsedEventDetails?.media || [],
       organizer: parsedEventDetails?.organizer || "",
       venue: parsedEventDetails?.venue || "",
       startDate: new Date(),
@@ -60,11 +69,12 @@ const EventForm = ({ type, eventDetails }: Props) => {
       const result = await editEvent({
         eventId: parsedEventDetails._id,
         title: values.title,
-        content: values.content,
+        content: values.content!,
         organizer: values.organizer as string,
         venue: values.venue as string,
         startDate: values.startDate as Date,
         endDate: values.endDate as Date,
+        media: values.media,
         image,
       });
       if (result?.error) {
@@ -80,19 +90,21 @@ const EventForm = ({ type, eventDetails }: Props) => {
 
       if (!image) {
         setPostImageError(true);
-        toast.error("Post image is required", {
+        toast.error("Event cover image is required", {
           position: "bottom-center",
         });
+        setIsSubmitting(false);
         return;
       }
 
       const result = await createEvent({
         title: values.title,
-        content: values.content,
+        content: values.content!,
         organizer: values.organizer as string,
         venue: values.venue as string,
         startDate: values.startDate as Date,
         endDate: values.endDate as Date,
+        media: values.media,
         image,
         path: pathname,
       });
@@ -105,6 +117,27 @@ const EventForm = ({ type, eventDetails }: Props) => {
       }
     }
   }
+
+  const handleImageChange = (image: any, field: any) => {
+    field.onChange([
+      ...field.value,
+      { url: image.url, publicId: image.publicId },
+    ]);
+  };
+
+  const [loadingRemove, setLoadingRemove] = useState(false);
+  const handleRemoveImage = async (currentImage: any, field: any) => {
+    setLoadingRemove(true);
+    const result = await deleteFile({
+      publicId: currentImage.publicId!,
+    });
+    if (result.success) {
+      field.onChange([
+        ...field.value.filter((image: any) => image.url !== currentImage.url),
+      ]);
+    }
+    setLoadingRemove(false);
+  };
 
   return (
     <Form {...form}>
@@ -137,7 +170,7 @@ const EventForm = ({ type, eventDetails }: Props) => {
 
         <div className="flex w-full flex-col">
           <FormLabel className="paragraph-semibold">
-            Event Label Image{" "}
+            Event Cover Image{" "}
             <span className="text-primary">
               {type === "edit"
                 ? "(Event label image is not required, upload only if you wish to change the existing one.)"
@@ -151,14 +184,16 @@ const EventForm = ({ type, eventDetails }: Props) => {
                 setImage(data);
                 setPostImageError(false);
               }}
+              maxSize={3000}
+              maxSizeLabel="3MB"
             />
           </div>
           <div className="body-regular mt-2.5">
-            Provide a reasonable event label image
+            Provide a reasonable event cover image
           </div>
           {postImageError && (
             <div className="text-red-500 mt-2">
-              Event label image is required
+              Event cover image is required
             </div>
           )}
         </div>
@@ -183,36 +218,41 @@ const EventForm = ({ type, eventDetails }: Props) => {
                   onEditorChange={(content) => field.onChange(content)}
                   initialValue={parsedEventDetails?.content || ""}
                   init={{
-                    height: 650,
-                    menubar: true,
-                    plugins: [
-                      "advlist",
-                      "autolink",
-                      "lists",
-                      "link",
-                      "image",
-                      "charmap",
-                      "preview",
-                      "anchor",
-                      "searchreplace",
-                      "visualblocks",
-                      "codesample",
-                      "fullscreen",
-                      "insertdatetime",
-                      "media",
-                      "table",
-                    ],
-                    toolbar: [
-                      "undo redo | styles | bold italic lineheight | alignleft aligncenter alignright| bullist numlist indent outdent | link image",
-                    ],
+                    height: 400,
+                    plugins: plugins,
+                    toolbar: eventToolbar,
+                    style_formats: eventStyleFormats,
+                    content_style: eventContentStyle,
                   }}
                 />
               </FormControl>
               <FormDescription className="body-regular mt-2.5">
-                Copy & paste or drag & drop the event images in the editor area.
-                Adjust the size and position of your images after dropping for
-                better appearance.
+                Enter event description if any
               </FormDescription>
+              <FormMessage className="text-red-500" />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="media"
+          render={({ field }) => (
+            <FormItem className="flex w-full flex-col">
+              <FormLabel className="paragraph-semibold">
+                Event Images <span className="text-primary">*</span> (upload all
+                images)
+              </FormLabel>
+              <FormControl className="mt-3.5">
+                <ImageUploader
+                  value={field.value}
+                  onChange={(image) => handleImageChange(image, field)}
+                  onRemove={async (currentImage) =>
+                    await handleRemoveImage(currentImage, field)
+                  }
+                  loadingRemove={loadingRemove}
+                />
+              </FormControl>
               <FormMessage className="text-red-500" />
             </FormItem>
           )}

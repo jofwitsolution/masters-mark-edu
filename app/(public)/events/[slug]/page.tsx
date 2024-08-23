@@ -61,6 +61,18 @@ const Page = async ({ params }: Props) => {
             <div className="mt-8">
               <ParseHTML data={event.content} />
             </div>
+            <div className="mt-8 flex gap-4 flex-wrap">
+              {event?.media.map((image: any) => (
+                <Image
+                  key={image?.publicId}
+                  alt={image?.publicId}
+                  src={image?.url}
+                  width={400}
+                  height={300}
+                  className="object-cover"
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>
