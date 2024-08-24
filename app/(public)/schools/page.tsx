@@ -4,6 +4,8 @@ import Courses from "./components/Courses";
 import BlogSection from "../(home)/components/BlogSection";
 import Entrance from "@/components/Entrance";
 import { Metadata } from "next";
+import { sanitizeData } from "@/lib/utils";
+import { getPosts } from "@/lib/actions/post.actions";
 
 export const metadata: Metadata = {
   title: "Schools | Master'sMark",
@@ -30,13 +32,15 @@ export const metadata: Metadata = {
   ],
 };
 
-const Page = () => {
+const Page = async () => {
+  const postResult = await getPosts();
+
   return (
     <div>
       <SchoolsHero />
       <Courses />
       <Entrance />
-      <BlogSection />
+      <BlogSection posts={(await sanitizeData(postResult.posts)) ?? []} />
     </div>
   );
 };
