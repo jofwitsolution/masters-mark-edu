@@ -45,3 +45,24 @@ export const TeamMemberSchema = z.object({
     })
     .min(1, "Rank is required"),
 });
+
+export const ReviewSchema = z.object({
+  name: z
+    .string()
+    .min(5, "Name cannot be less than 5 char.")
+    .max(60, "Name cannot exceed 60 char."),
+  occupation: z
+    .string()
+    .min(3, "Occupation cannot be less than 3 char.")
+    .max(20, "Occupation cannot exceed 20 char."),
+  comment: z
+    .string()
+    .min(3, "Review cannot be less than 20 char.")
+    .max(150, "Review cannot exceed 150 char."),
+  rating: z
+    .string({
+      required_error: "Rating is required",
+      invalid_type_error: "Rating is required",
+    })
+    .min(1, "Rating is required"),
+});

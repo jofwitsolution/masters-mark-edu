@@ -4,8 +4,9 @@ export interface IReview extends Document {
   _id: string;
   name: string;
   comment: string;
-  position: string;
+  occupation: string;
   rating: string;
+  isApproved: boolean;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -13,9 +14,10 @@ export interface IReview extends Document {
 const ReviewSchema = new Schema(
   {
     name: { type: String, required: true },
-    position: { type: String, required: true },
+    occupation: { type: String, required: true },
     comment: { type: String, required: true },
     rating: { type: Number, required: true },
+    isApproved: { type: Boolean, default: false },
   },
   { timestamps: true }
 );

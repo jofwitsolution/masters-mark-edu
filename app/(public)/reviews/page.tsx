@@ -1,3 +1,4 @@
+import ReviewForm from "@/components/forms/ReviewForm";
 import { Metadata } from "next";
 import React from "react";
 
@@ -39,9 +40,11 @@ const Page = () => {
         <h2 className="font-urbanist font-semibold text-[20px]">
           Rate Master&apos;sMark Education
         </h2>
-        <p className="mt-2">
+        <p className="mt-2 mb-8">
           Write your review by filling the below form (For parents and students)
         </p>
+
+        <ReviewForm />
       </section>
     </div>
   );
