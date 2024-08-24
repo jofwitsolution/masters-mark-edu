@@ -10,14 +10,16 @@ const PostCard = ({ post }: { post: IPost }) => {
     <Link href={`/blog/${post.slug}`} className="block w-full">
       <Card className="!p-0 w-full">
         <CardHeader className="!p-0 w-full">
-          <div className="relative h-[300px] w-full">
-            <Image
-              src={post.imageUrl}
-              alt={post.title}
-              fill
-              className="rounded-t-md object-cover w-full"
-            />
-          </div>
+          {post?.imageUrl && (
+            <div className="relative h-[300px] w-full">
+              <Image
+                src={post.imageUrl}
+                alt={post.title}
+                fill
+                className="rounded-t-md object-cover w-full"
+              />
+            </div>
+          )}
         </CardHeader>
         <CardContent>
           <div className="flex gap-2 items-center pt-4 px-2 sm:px-4">
@@ -41,7 +43,7 @@ const PostCard = ({ post }: { post: IPost }) => {
             <div className="flex max-xs:text-[12px] justify-between gap-4 items-center text-gray-500 text-[14px]">
               <div className="flex gap-4">
                 <span className="flex gap-2 items-center btn-hover-style">
-                  <Image
+                  {/* <Image
                     src="/icons/comment.svg"
                     width={18}
                     height={18}
@@ -49,7 +51,7 @@ const PostCard = ({ post }: { post: IPost }) => {
                   />
                   <span>
                     6 <span className="">Comments</span>
-                  </span>
+                  </span> */}
                 </span>
               </div>
             </div>

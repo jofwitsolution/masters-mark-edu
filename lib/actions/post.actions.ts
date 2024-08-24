@@ -20,30 +20,28 @@ export const createPost = async ({
   try {
     await connectToDatabase();
 
-    if (!image) {
-      return { error: "Invalid post image" };
-    } else {
-      //   const publicId: string = `verification-doc-${Date.now()}`;
+    let uploadResult;
 
-      const uploadResult = await cloudinary.uploader.upload(image as string, {
+    if (image) {
+      uploadResult = await cloudinary.uploader.upload(image as string, {
         // resource_type: "raw",
         folder: "post-images",
         // public_id: publicId,
       });
-
-      const slug = createSlug(title, 5);
-
-      await Post.create({
-        title,
-        slug,
-        content,
-        author: "Master'sMark",
-        imageUrl: uploadResult.secure_url,
-        imagePublicId: uploadResult.public_id,
-      });
-
-      revalidatePath(path);
     }
+
+    const slug = createSlug(title, 5);
+
+    await Post.create({
+      title,
+      slug,
+      content,
+      author: "Master'sMark",
+      imageUrl: uploadResult?.secure_url || "",
+      imagePublicId: uploadResult?.public_id || "",
+    });
+
+    revalidatePath(path);
   } catch (error) {
     console.log(error);
     return { error: "Something went wrong!" };
@@ -70,6 +68,11 @@ export const editPost = async ({
     }
 
     if (image) {
+      // delete existing post image
+      if (post?.imagePublicId) {
+        await cloudinary.uploader.destroy(post.imagePublicId);
+      }
+
       const uploadResult = await cloudinary.uploader.upload(image as string, {
         folder: "post-images",
       });

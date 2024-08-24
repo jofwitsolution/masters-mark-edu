@@ -10,8 +10,10 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import Image from "next/image";
+import { IEvent } from "@/lib/models/Event";
+import Link from "next/link";
 
-const EventSection = () => {
+const EventSection = ({ events }: { events: IEvent[] }) => {
   return (
     <section className="padding-vertical">
       <div className="max-width">
@@ -32,24 +34,27 @@ const EventSection = () => {
             className="md:w-full"
           >
             <CarouselContent>
-              {Array.from({ length: 5 }).map((_, index) => (
-                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                  <div className="p-1">
+              {events.map((event) => (
+                <CarouselItem
+                  key={event._id}
+                  className="md:basis-1/2 lg:basis-1/3"
+                >
+                  <Link href={`/events/${event.slug}`} className="p-1">
                     <Card className="!p-2 max-md:max-w-[340px]">
                       <CardContent className="p-0">
                         <Image
-                          src={"/images/event-1.jpg"}
+                          src={event.imageUrl}
                           width={360}
                           height={268}
-                          alt="event"
-                          className="rounded"
+                          alt={event.title}
+                          className="rounded h-[268px] object-cover"
                         />
                       </CardContent>
                       <CardFooter className="h-[80px] p-2 flex items-start">
-                        <h3 className="h3-semibold">Sport and Fun Day</h3>
+                        <h3 className="h3-semibold">{event.title}</h3>
                       </CardFooter>
                     </Card>
-                  </div>
+                  </Link>
                 </CarouselItem>
               ))}
             </CarouselContent>

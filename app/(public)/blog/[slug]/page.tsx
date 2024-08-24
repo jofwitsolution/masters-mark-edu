@@ -6,6 +6,7 @@ import ParseHTML from "@/components/PassHTML";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import PageNotFound from "@/components/errors/PageNotFound";
+import Programs from "../../(home)/components/Programs";
 
 interface Props {
   params: { slug: string };
@@ -48,13 +49,15 @@ const Page = async ({ params }: Props) => {
         <div className="w-full flex justify-between">
           <div className="w-full md:w-[70%]">
             <div>
-              <Image
-                src={post.imageUrl}
-                alt={post.title}
-                width={800}
-                height={600}
-                className="rounded-md object-cover"
-              />
+              {post?.ImageUrl && (
+                <Image
+                  src={post.imageUrl}
+                  alt={post.title}
+                  width={1000}
+                  height={600}
+                  className="rounded-md object-cover"
+                />
+              )}
             </div>
             <div className="mt-8">
               <ParseHTML data={post.content} />
@@ -62,6 +65,11 @@ const Page = async ({ params }: Props) => {
           </div>
         </div>
       </div>
+      <section className="bg-tertiary-200 padding-vertical">
+        <div className="max-width">
+          <Programs />
+        </div>
+      </section>
     </div>
   );
 };

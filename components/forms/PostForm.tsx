@@ -70,13 +70,6 @@ const PostForm = ({ type, postDetails }: Props) => {
       }
     } else {
       // Create New Post
-      if (!image) {
-        setPostImageError(true);
-        toast.error("Post image is required", {
-          position: "bottom-center",
-        });
-        return;
-      }
 
       const result = await createPost({
         title: values.title,
@@ -169,7 +162,7 @@ const PostForm = ({ type, postDetails }: Props) => {
                   onEditorChange={(content) => field.onChange(content)}
                   initialValue={parsedPostDetails?.content || ""}
                   init={{
-                    height: 400,
+                    height: 700,
                     menubar: true,
                     plugins: plugins,
                     toolbar: postToolbar,

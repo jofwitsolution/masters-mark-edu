@@ -166,7 +166,13 @@ export const deleteEvent = async (eventId: string, path: string) => {
       return { error: "Event not found" };
     }
 
-    await cloudinary.uploader.destroy(event.imagePublicId);
+    const mediaToDelete: string[] = [];
+    event.media.forEach((image: any) => {
+      mediaToDelete.push(image.publicId);
+    });
+    mediaToDelete.push(event.imagePublicId);
+
+    await cloudinary.api.delete_resources(mediaToDelete);
 
     revalidatePath(path);
   } catch (error) {

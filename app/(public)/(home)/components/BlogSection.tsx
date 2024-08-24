@@ -1,20 +1,14 @@
 "use client";
 
 import React from "react";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardFooter, CardTitle } from "@/components/ui/card";
 import Image from "next/image";
 import { getDate_2 } from "@/lib/utils";
-import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { IPost } from "@/lib/models/Post";
 
-const BlogSection = () => {
+const BlogSection = ({ posts }: { posts: IPost[] }) => {
   return (
     <section className="padding-vertical bg-tertiary-200">
       <div className="max-width">
@@ -27,16 +21,16 @@ const BlogSection = () => {
           </p>
         </div>
         <div className="flex gap-4 flex-wrap max-sm:justify-center xl:justify-center">
-          {Array.from({ length: 3 }).map((_, index) => (
-            <Link key={index} href={"/"} className="group">
+          {posts.slice(0, 3).map((post) => (
+            <Link key={post._id} href={`/blog/${post.slug}`} className="group">
               <Card className="!p-3 bg-slate-200 rounded-3xl w-[330px] group-hover:border group-hover:border-primary">
                 <CardTitle className="h-[100px] h3-normal px-2">
-                  master’smark Early Learning Educational Services.
+                  {post.title}
                 </CardTitle>
 
                 <CardContent className="p-0 mt-4">
                   <Image
-                    src={"/images/event-1.jpg"}
+                    src={post?.imageUrl || "/images/post-placeholder.jpg"}
                     width={320}
                     height={150}
                     alt="event"
@@ -44,7 +38,7 @@ const BlogSection = () => {
                   />
                 </CardContent>
                 <CardFooter className="p-2 pb-1 flex items-start">
-                  <span>{getDate_2(new Date())}</span>
+                  <span>{getDate_2(post.createdAt)}</span>
                 </CardFooter>
               </Card>
             </Link>
