@@ -35,6 +35,14 @@ const Page = () => {
           <h1 className="h1-gabriela">Parent Reviews</h1>
         </div>
       </section>
+      <section className="max-width padding-vertical">
+        <h2 className="font-urbanist font-semibold text-[20px]">
+          Rate Master&apos;sMark Education
+        </h2>
+        <p className="mt-2">
+          Write your review by filling the below form (For parents and students)
+        </p>
+      </section>
     </div>
   );
 };
