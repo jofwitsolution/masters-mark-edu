@@ -9,6 +9,21 @@ export async function sanitizeData(data: any) {
   return JSON.parse(JSON.stringify(data));
 }
 
+export function exceedsMaxLength(input: string): boolean {
+  const maxLength = 148;
+  return input.length > maxLength;
+}
+
+export function truncateString(input: string): string {
+  const maxLength = 148;
+
+  if (input.length > maxLength) {
+    return input.substring(0, maxLength) + "...";
+  } else {
+    return input;
+  }
+}
+
 export function getDate_1(date: string | Date) {
   const months = [
     "Jan",

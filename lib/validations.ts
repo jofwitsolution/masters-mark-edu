@@ -58,7 +58,7 @@ export const ReviewSchema = z.object({
   comment: z
     .string()
     .min(3, "Review cannot be less than 20 char.")
-    .max(150, "Review cannot exceed 150 char."),
+    .max(300, "Review cannot exceed 300 char."),
   rating: z
     .string({
       required_error: "Rating is required",

@@ -7,10 +7,14 @@ import { IEvent } from "@/lib/models/Event";
 import PostDeleteAction from "./PostDeleteAction";
 import { ITeamMember } from "@/lib/models/TeamMember";
 import MemberDeleteAction from "./MemberDeleteAction";
+import { IReview } from "@/lib/models/Review";
+import ReviewDeleteAction from "./ReviewDeleteAction";
+import ReviewApproveAction from "./ReviewApproveAction";
 
 const postColumnHelper = createColumnHelper<IPost>();
 const eventColumnHelper = createColumnHelper<IEvent>();
 const memberColumnHelper = createColumnHelper<ITeamMember>();
+const reviewColumnHelper = createColumnHelper<IReview>();
 
 export const postColumns = [
   postColumnHelper.accessor("title", {
@@ -159,6 +163,53 @@ export const memberColumns = [
       const member = info.row.original;
 
       return <MemberDeleteAction member={member} />;
+    },
+  }),
+];
+
+export const reviewColumns = [
+  reviewColumnHelper.accessor("name", {
+    id: "name",
+    header: "Name",
+    cell: (info) => info.getValue(),
+  }),
+  reviewColumnHelper.accessor("occupation", {
+    id: "occupation",
+    header: "Occupation",
+    cell: (info) => info.getValue(),
+  }),
+  reviewColumnHelper.accessor("comment", {
+    id: "comment",
+    header: "Review",
+    cell: (info) => (
+      <p className="text-wrap text-primary-100">{info.getValue()}</p>
+    ),
+  }),
+  reviewColumnHelper.accessor("createdAt", {
+    id: "createdAt",
+    header: "Created",
+    cell: (info) => {
+      const date = getDate_1(info.getValue());
+
+      return <span className="">{date}</span>;
+    },
+  }),
+  reviewColumnHelper.accessor("_id", {
+    id: "_id",
+    header: "Status",
+    cell: (info) => {
+      const review = info.row.original;
+
+      return <ReviewApproveAction review={review} />;
+    },
+  }),
+  reviewColumnHelper.accessor("_id", {
+    id: "_id",
+    header: "Action",
+    cell: (info) => {
+      const review = info.row.original;
+
+      return <ReviewDeleteAction review={review} />;
     },
   }),
 ];

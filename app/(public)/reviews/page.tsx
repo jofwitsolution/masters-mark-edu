@@ -1,6 +1,9 @@
 import ReviewForm from "@/components/forms/ReviewForm";
 import { Metadata } from "next";
 import React from "react";
+import Reviews from "./components/Reviews";
+import { getReviews } from "@/lib/actions/review.actions";
+import { sanitizeData } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Reviews | Master'sMark",
@@ -28,7 +31,9 @@ export const metadata: Metadata = {
   ],
 };
 
-const Page = () => {
+const Page = async () => {
+  const reviewResult = await getReviews({});
+
   return (
     <div>
       <section className="bg-tertiary-200 py-4 md:py-10">
@@ -45,6 +50,8 @@ const Page = () => {
         </p>
 
         <ReviewForm />
+
+        <Reviews reviews={(await sanitizeData(reviewResult.reviews)) ?? []} />
       </section>
     </div>
   );

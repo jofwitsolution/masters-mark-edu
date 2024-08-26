@@ -10,17 +10,21 @@ import GallerySection from "./components/GallerySection";
 import { getEvents } from "@/lib/actions/event.actions";
 import { sanitizeData } from "@/lib/utils";
 import { getPosts } from "@/lib/actions/post.actions";
+import { getReviews } from "@/lib/actions/review.actions";
 
 const Page = async () => {
   const eventResult = await getEvents();
   const postResult = await getPosts();
+  const reviewResult = await getReviews({});
 
   return (
     <div>
       <HomeHero />
       <IntroSection />
       <FeatureSection />
-      <ReviewSection />
+      <ReviewSection
+        reviews={(await sanitizeData(reviewResult.reviews)) ?? []}
+      />
       <EventSection events={(await sanitizeData(eventResult.events)) ?? []} />
       <BlogSection posts={(await sanitizeData(postResult.posts)) ?? []} />
       <GallerySection />
