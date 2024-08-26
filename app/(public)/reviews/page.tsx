@@ -4,6 +4,7 @@ import React from "react";
 import Reviews from "./components/Reviews";
 import { getReviews } from "@/lib/actions/review.actions";
 import { sanitizeData } from "@/lib/utils";
+import Pagination from "@/components/Pagination";
 
 export const metadata: Metadata = {
   title: "Reviews | Master'sMark",
@@ -31,8 +32,11 @@ export const metadata: Metadata = {
   ],
 };
 
-const Page = async () => {
-  const reviewResult = await getReviews({});
+const Page = async ({ searchParams }: { searchParams: { page: number } }) => {
+  const reviewResult = await getReviews({
+    page: searchParams.page ? +searchParams.page : 1,
+    pageSize: 10,
+  });
 
   return (
     <div>
@@ -52,6 +56,13 @@ const Page = async () => {
         <ReviewForm />
 
         <Reviews reviews={(await sanitizeData(reviewResult.reviews)) ?? []} />
+        <div className="mt-10">
+          <Pagination
+            pageNumber={searchParams?.page ? +searchParams.page : 1}
+            isNext={reviewResult.isNext as boolean}
+            scrollToId="#reviews"
+          />
+        </div>
       </section>
     </div>
   );

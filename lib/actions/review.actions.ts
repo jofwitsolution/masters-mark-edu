@@ -27,7 +27,15 @@ export const createReview = async ({
   }
 };
 
-export const getReviews = async ({ isApproved }: { isApproved?: boolean }) => {
+export const getReviews = async ({
+  isApproved,
+  pageSize = 0,
+  page = 1,
+}: {
+  isApproved?: boolean;
+  pageSize?: number;
+  page?: number;
+}) => {
   try {
     await connectToDatabase();
 
@@ -35,9 +43,25 @@ export const getReviews = async ({ isApproved }: { isApproved?: boolean }) => {
     if (isApproved) {
       query.isApproved = isApproved;
     }
-    const reviews = await Review.find(query).sort({ createdAt: -1 });
 
-    return { reviews };
+    if (pageSize === 0) {
+      const reviews = await Review.find(query).sort({ createdAt: -1 });
+
+      return { reviews };
+    } else {
+      // Calculcate the number of posts to skip based on the page number and page size
+      const skipAmount = (page - 1) * pageSize;
+      const reviews = await Review.find(query)
+        .skip(skipAmount)
+        .limit(pageSize)
+        .sort({ createdAt: -1 });
+
+      const totalReviews = await Review.countDocuments(query);
+
+      const isNext = totalReviews > skipAmount + reviews.length;
+
+      return { reviews, isNext };
+    }
   } catch (error) {
     console.log(error);
     return { error: "Something went wrong!" };

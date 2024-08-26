@@ -1,5 +1,6 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
+import qs from "query-string";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -23,6 +24,33 @@ export function truncateString(input: string): string {
     return input;
   }
 }
+
+interface UrlQueryParams {
+  params: string;
+  key: string;
+  scrollToId?: string;
+  value: string | null;
+}
+export const formUrlQuery = ({
+  params,
+  key,
+  value,
+  scrollToId,
+}: UrlQueryParams) => {
+  const currentUrl = qs.parse(params);
+
+  currentUrl[key] = value;
+
+  return qs.stringifyUrl(
+    {
+      url: scrollToId
+        ? window.location.pathname + scrollToId
+        : window.location.pathname,
+      query: currentUrl,
+    },
+    { skipNull: true }
+  );
+};
 
 export function getDate_1(date: string | Date) {
   const months = [
