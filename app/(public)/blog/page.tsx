@@ -1,15 +1,23 @@
 import React from "react";
 import type { Metadata } from "next";
-import { getPosts } from "@/lib/actions/post.actions";
+import { getAllPost } from "@/lib/actions/post.actions";
 import PostCard from "@/components/cards/PostCard";
+import LocalSearchbar from "@/components/search/LocalSearchbar";
+import Pagination from "@/components/Pagination";
+import Filter from "@/components/search/Filter";
+import { PostFilters } from "@/constants/filters";
 
 export const metadata: Metadata = {
   title: "Blog Posts | Master'sMark",
   description: "Master'sMark Education Blog Posts",
 };
 
-const Page = async () => {
-  const postResult = await getPosts();
+const Page = async ({ searchParams }: SearchParamsProps) => {
+  const postResult = await getAllPost({
+    searchQuery: searchParams.q,
+    filter: searchParams.filter,
+    page: searchParams.page ? +searchParams.page : 1,
+  });
 
   return (
     <div className="">
@@ -20,11 +28,37 @@ const Page = async () => {
       </div>
       <div className="max-width padding-vertical flex justify-between">
         <div className="w-full md:w-[70%] space-y-6">
-          {postResult?.posts?.map((post) => (
-            <PostCard key={post._id} post={post} />
-          ))}
+          {postResult?.posts.length > 0 ? (
+            <>
+              {postResult?.posts?.map((post: any) => (
+                <PostCard key={post._id} post={post} />
+              ))}
+            </>
+          ) : (
+            <p className="text-center font-semibold text-[18px]">
+              No blog posts found.
+            </p>
+          )}
+
+          <div className="mt-10">
+            <Pagination
+              pageNumber={searchParams?.page ? +searchParams.page : 1}
+              isNext={postResult.isNext as boolean}
+            />
+          </div>
         </div>
-        <div className="max-lg:hidden w-[250px] flex flex-col py-8"></div>
+
+        <div className="max-lg:hidden w-[250px]">
+          <LocalSearchbar
+            route="/blog"
+            iconPosition="left"
+            imgSrc="/icons/search.svg"
+            placeholder="Search for posts..."
+            otherClasses="flex-1 border"
+          />
+
+          <Filter filters={PostFilters} />
+        </div>
       </div>
     </div>
   );

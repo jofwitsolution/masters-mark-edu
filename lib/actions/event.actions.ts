@@ -5,6 +5,7 @@ import Event from "../models/Event";
 import { createSlug } from "../utils";
 import { connectToDatabase } from "../mongoose";
 import { cloudinary } from "../helpers/cloudinary";
+import { FilterQuery } from "mongoose";
 
 export const createEvent = async ({
   title,
@@ -130,6 +131,53 @@ export const getEvents = async () => {
     return { error: "Something went wrong!" };
   }
 };
+
+export async function getAllEvent(params: GetAllPostParams) {
+  try {
+    connectToDatabase();
+
+    const { searchQuery, filter = "recent", page = 1, pageSize = 10 } = params;
+
+    // Calculcate the number of posts to skip based on the page number and page size
+    const skipAmount = (page - 1) * pageSize;
+
+    const query: FilterQuery<typeof Event> = {};
+
+    if (searchQuery) {
+      query.$or = [
+        { title: { $regex: new RegExp(searchQuery, "i") } },
+        { content: { $regex: new RegExp(searchQuery, "i") } },
+      ];
+    }
+
+    let sortOptions = {};
+
+    switch (filter) {
+      case "recent":
+        sortOptions = { createdAt: -1 };
+        break;
+      case "old":
+        sortOptions = { createdAt: 1 };
+        break;
+      default:
+        break;
+    }
+
+    const events = await Event.find(query)
+      .skip(skipAmount)
+      .limit(pageSize)
+      .sort(sortOptions);
+
+    const totalEvents = await Event.countDocuments(query);
+
+    const isNext = totalEvents > skipAmount + events.length;
+
+    return { events, isNext };
+  } catch (error) {
+    console.log(error);
+    return { error: "Something went wrong!" };
+  }
+}
 
 export const getEventById = async (id: string) => {
   try {

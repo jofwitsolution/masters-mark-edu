@@ -15,3 +15,14 @@ type DashboardNavLinks = {
   label: string;
   icon: string;
 };
+
+type GetAllPostParams = {
+  page?: number;
+  pageSize?: number;
+  searchQuery?: string;
+  filter?: string;
+};
+
+type SearchParamsProps = {
+  searchParams: { [key: string]: string | undefined };
+};

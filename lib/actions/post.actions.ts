@@ -1,6 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { FilterQuery } from "mongoose";
 import { cloudinary } from "../helpers/cloudinary";
 import Post from "../models/Post";
 import { connectToDatabase } from "../mongoose";
@@ -105,6 +106,53 @@ export const getPosts = async () => {
     return { error: "Something went wrong!" };
   }
 };
+
+export async function getAllPost(params: GetAllPostParams) {
+  try {
+    connectToDatabase();
+
+    const { searchQuery, filter = "recent", page = 1, pageSize = 10 } = params;
+
+    // Calculcate the number of posts to skip based on the page number and page size
+    const skipAmount = (page - 1) * pageSize;
+
+    const query: FilterQuery<typeof Post> = {};
+
+    if (searchQuery) {
+      query.$or = [
+        { title: { $regex: new RegExp(searchQuery, "i") } },
+        { content: { $regex: new RegExp(searchQuery, "i") } },
+      ];
+    }
+
+    let sortOptions = {};
+
+    switch (filter) {
+      case "recent":
+        sortOptions = { createdAt: -1 };
+        break;
+      case "old":
+        sortOptions = { createdAt: 1 };
+        break;
+      default:
+        break;
+    }
+
+    const posts = await Post.find(query)
+      .skip(skipAmount)
+      .limit(pageSize)
+      .sort(sortOptions);
+
+    const totalPosts = await Post.countDocuments(query);
+
+    const isNext = totalPosts > skipAmount + posts.length;
+
+    return { posts, isNext };
+  } catch (error) {
+    console.log(error);
+    return { error: "Something went wrong!" };
+  }
+}
 
 export const getPostById = async (id: string) => {
   try {
