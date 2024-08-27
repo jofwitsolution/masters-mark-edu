@@ -75,7 +75,7 @@ const FeatureSection = () => {
               </p>
             </div>
 
-            <Link href={"/"} className="mt-8">
+            <Link href={"/contact"} className="mt-8">
               <Button className="rounded-btn-2">Apply now</Button>
             </Link>
           </div>

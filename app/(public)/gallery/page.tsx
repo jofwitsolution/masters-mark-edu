@@ -2,6 +2,8 @@ import React from "react";
 import FacebookPage from "@/components/FacebookPage";
 import Gallery from "@/components/Gallery";
 import { Metadata } from "next";
+import { getAllMedia } from "@/lib/actions/media.action";
+import { sanitizeData } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Site Gallery | Master'sMark",
@@ -18,13 +20,15 @@ export const metadata: Metadata = {
   ],
 };
 
-const page = () => {
+const page = async () => {
+  const mediaResult = await getAllMedia();
+
   return (
     <div>
       <div className="max-width padding-vertical">
         <h1 className="mb-8 h1-gabriela text-center">SITE GALLERY</h1>
 
-        <Gallery />
+        <Gallery media={(await sanitizeData(mediaResult.media)) ?? []} />
       </div>
 
       <FacebookPage />

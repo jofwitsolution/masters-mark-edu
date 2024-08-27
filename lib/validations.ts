@@ -31,6 +31,14 @@ export const EventSchema = z.object({
   endDate: z.date().optional(),
 });
 
+export const MediaSchema = z.object({
+  media: z
+    .array(
+      z.object({ url: z.string().optional(), publicId: z.string().optional() })
+    )
+    .min(1, "You must upload image before saving"),
+});
+
 export const TeamMemberSchema = z.object({
   name: z
     .string()

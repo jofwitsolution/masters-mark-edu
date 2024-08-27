@@ -251,6 +251,10 @@ const EventForm = ({ type, eventDetails }: Props) => {
                     await handleRemoveImage(currentImage, field)
                   }
                   loadingRemove={loadingRemove}
+                  uploadPreset={
+                    process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET!
+                  }
+                  uploadFolder="/event-images"
                 />
               </FormControl>
               <FormMessage className="text-red-500" />

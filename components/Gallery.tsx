@@ -1,13 +1,17 @@
 "use client";
 
-import { galleryImages } from "@/constants/gallery-images";
+// import { galleryImages } from "@/constants/gallery-images";
+import { IMedia } from "@/lib/models/Media";
 import React from "react";
 import ImageGallery from "react-image-gallery";
 
-const Gallery = () => {
+const Gallery = ({ media }: { media: IMedia[] }) => {
+  console.log(media);
+
+  const images = media.map((media) => ({ original: media.url }));
   return (
     <div>
-      <ImageGallery items={galleryImages} />
+      <ImageGallery items={images} />
     </div>
   );
 };

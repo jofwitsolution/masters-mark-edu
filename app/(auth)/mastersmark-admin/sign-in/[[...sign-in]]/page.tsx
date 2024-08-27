@@ -7,5 +7,7 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <SignIn fallbackRedirectUrl={"/mastersmark-admin"} />;
+  return (
+    <SignIn fallbackRedirectUrl={"/mastersmark-admin"} afterSignOutUrl={"/"} />
+  );
 }

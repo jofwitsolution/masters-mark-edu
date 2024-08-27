@@ -16,6 +16,8 @@ interface ImageUploadProps {
   onChange: (value: ImageData) => void;
   onRemove: (value: ImageData) => void;
   loadingRemove?: boolean;
+  uploadPreset: string;
+  uploadFolder: string;
 }
 
 const ImageUploader: React.FC<ImageUploadProps> = ({
@@ -23,6 +25,8 @@ const ImageUploader: React.FC<ImageUploadProps> = ({
   onRemove,
   value,
   loadingRemove = false,
+  uploadPreset,
+  uploadFolder,
 }) => {
   const onUpload = (result: any) => {
     onChange({ url: result.info.secure_url, publicId: result.info.public_id });
@@ -59,10 +63,10 @@ const ImageUploader: React.FC<ImageUploadProps> = ({
       </div>
 
       <CldUploadWidget
-        uploadPreset={process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET}
+        uploadPreset={uploadPreset}
         onUpload={onUpload}
         // Set folder to "event-images" in Cloudinary
-        options={{ folder: "/event-images" }}
+        options={{ folder: uploadFolder }}
       >
         {({ open }) => {
           return (
